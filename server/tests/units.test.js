@@ -42,5 +42,8 @@ test('startup rejects missing or weak configuration', () => {
   assert.throws(() => validateEnv({}), /Missing required/);
   const base = { DB_HOST: 'h', DB_NAME: 'n', DB_USER: 'u', DB_PASSWORD: 'p' };
   assert.throws(() => validateEnv({ ...base, JWT_SECRET: 'short' }), /at least 32/);
+  const noPassword = { DB_HOST: 'h', DB_NAME: 'n', DB_USER: 'u', JWT_SECRET: 'x'.repeat(32) };
+  assert.doesNotThrow(() => validateEnv({ ...noPassword, DB_PASSWORD: '' }), 'empty password is fine locally');
+  assert.throws(() => validateEnv({ ...noPassword, DB_PASSWORD: '', NODE_ENV: 'production' }), /DB_PASSWORD/);
   assert.doesNotThrow(() => validateEnv({ ...base, JWT_SECRET: 'x'.repeat(32) }));
 });
