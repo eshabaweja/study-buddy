@@ -1,4 +1,4 @@
-# Buckademy
+# Study Buddy
 
 A learning management system for course content and concept-based learning.
 
@@ -99,9 +99,9 @@ npm run migrate:question-images
 
 After migration, question figures live only in rich-text HTML. Instructors add and remove images through the Quill editor.
 
-## Figure descriptions for Brutus (describe once)
+## Figure descriptions for Study Buddy (describe once)
 
-Prompt figures are described once via LiteLLM vision (`LLM_VISION_MODEL`, default `claude-sonnet-4-6` on the OSU model hub) and stored on the question. Brutus reuses that text for every student instead of re-sending images each chat turn.
+Prompt figures are described once via LLM vision (`LLM_VISION_MODEL`, default `claude-sonnet-4-6`) and stored on the question. Study Buddy reuses that text for every student instead of re-sending images each chat turn.
 
 ```bash
 cd server

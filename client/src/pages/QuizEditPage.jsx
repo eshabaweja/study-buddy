@@ -20,7 +20,7 @@ export default function QuizEditPage() {
 
   if (!isNew && Number.isNaN(quizId)) {
     return (
-      <div className="bux-container bux-mar-top-sp-16">
+      <div className="sb-container sb-mar-top-sp-16">
         <p>Invalid quiz id.</p>
         <Link to="/dashboard">Back to dashboard</Link>
       </div>
@@ -28,7 +28,7 @@ export default function QuizEditPage() {
   }
 
   return (
-    <div className="bux-container ba-container bux-mar-top-sp-16 bux-mar-bottom-sp-32">
+    <div className="sb-container app-container sb-mar-top-sp-16 sb-mar-bottom-sp-32">
       <p>
         <Link to="/dashboard">← Dashboard</Link>
       </p>

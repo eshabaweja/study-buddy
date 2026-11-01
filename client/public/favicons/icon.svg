@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Study Buddy">
+  <rect width="512" height="512" rx="112" fill="#4f46e5"/>
+  <!-- cat head cut out of the tile: the kitty is the negative space -->
+  <path fill="#fff" fill-rule="evenodd" d="M116 120 L196 188 Q256 172 316 188 L396 120 L412 270 Q412 400 256 400 Q100 400 100 270 Z
+    M190 262 a26 34 0 1 0 0.1 0 Z M322 262 a26 34 0 1 0 0.1 0 Z
+    M232 316 L280 316 L256 344 Z"/>
+</svg>

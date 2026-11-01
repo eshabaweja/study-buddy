@@ -22,12 +22,12 @@ const ImageCarousel = ({ images }) => {
   }
 
   return (
-    <div className="ba-carousel">
-      <div className="ba-carousel__container">
+    <div className="app-carousel">
+      <div className="app-carousel__container">
         <img
           src={images[currentIndex]}
           alt={`Slide ${currentIndex + 1}`}
-          className="ba-carousel__image ba-interactive"
+          className="app-carousel__image app-interactive"
           onClick={() => setSelectedImage({
             url: images[currentIndex],
             alt: `Slide ${currentIndex + 1}`
@@ -39,24 +39,24 @@ const ImageCarousel = ({ images }) => {
         <>
           <button
             onClick={prevSlide}
-            className="bux-button bux-button--alt ba-carousel__nav-button ba-carousel__nav-button--prev"
+            className="sb-button sb-button--alt app-carousel__nav-button app-carousel__nav-button--prev"
             aria-label="Previous slide"
           >
             ←
           </button>
           <button
             onClick={nextSlide}
-            className="bux-button bux-button--alt ba-carousel__nav-button ba-carousel__nav-button--next"
+            className="sb-button sb-button--alt app-carousel__nav-button app-carousel__nav-button--next"
             aria-label="Next slide"
           >
             →
           </button>
-          <div className="ba-carousel__indicators">
+          <div className="app-carousel__indicators">
             {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`ba-carousel__indicator ${currentIndex === index ? 'ba-carousel__indicator--active' : ''}`}
+                className={`app-carousel__indicator ${currentIndex === index ? 'app-carousel__indicator--active' : ''}`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}

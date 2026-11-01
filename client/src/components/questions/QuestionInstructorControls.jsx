@@ -8,7 +8,7 @@ export function QuestionInstructorEditPanel({
   onCancel,
 }) {
   return (
-    <div className="ba-question-instructor ba-question-instructor--editing bux-mar-top-sp-16">
+    <div className="app-question-instructor app-question-instructor--editing sb-mar-top-sp-16">
       <UpdateQuestionForm
         inlineQuestionId={String(questionId)}
         inlineCourseCode={courseCode}

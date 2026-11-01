@@ -17,12 +17,12 @@ export default function QuizTypedItem({
   const answerRef = useRef(null);
 
   return (
-    <div className="ba-card ba-quiz-typed-item bux-mar-bottom-sp-16">
-      <div className="ba-card__content">
-        <QuizFigureContent html={promptHtml} className="bux-mar-bottom-sp-16" />
-        <div className="ba-quiz-typed-item__answer">
+    <div className="app-card app-quiz-typed-item sb-mar-bottom-sp-16">
+      <div className="app-card__content">
+        <QuizFigureContent html={promptHtml} className="sb-mar-bottom-sp-16" />
+        <div className="app-quiz-typed-item__answer">
           {showExample && (
-            <div className="ba-problem-example__inline bux-mar-bottom-sp-8">
+            <div className="app-problem-example__inline sb-mar-bottom-sp-8">
               <ProblemSolvingExample withLabel />
             </div>
           )}
@@ -39,8 +39,8 @@ export default function QuizTypedItem({
           />
         </div>
         {showReference && referenceHtml && (
-          <div className="bux-mar-top-sp-16">
-            <h4 className="bux-card__heading">Reference answer</h4>
+          <div className="sb-mar-top-sp-16">
+            <h4 className="sb-card__heading">Reference answer</h4>
             <QuizFigureContent html={referenceHtml} />
           </div>
         )}

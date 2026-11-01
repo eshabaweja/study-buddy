@@ -126,12 +126,12 @@ const AddConceptAssociationForm = () => {
     }, [success]);  
 
   return (
-    <div className="bux-mar-top-sp-32">
+    <div className="sb-mar-top-sp-32">
       {/* Section: Add a New Concept */}
-      <div className="bux-mar-bottom-sp-32">
+      <div className="sb-mar-bottom-sp-32">
         <h4>Add Concept to a Course</h4>
-        <form className="bux-form" onSubmit={handleNewConceptSubmit}>
-          <div className="bux-mar-bottom-sp-16">
+        <form className="sb-form" onSubmit={handleNewConceptSubmit}>
+          <div className="sb-mar-bottom-sp-16">
             <label htmlFor="newConceptCourse">Select Associated Course *</label>
             <select
               id="newConceptCourse"
@@ -149,7 +149,7 @@ const AddConceptAssociationForm = () => {
               ))}
             </select>
           </div>
-          <div className="bux-mar-bottom-sp-16">
+          <div className="sb-mar-bottom-sp-16">
             <label htmlFor="newConceptName">Concept Name *</label>
             <input
               type="text"
@@ -162,14 +162,14 @@ const AddConceptAssociationForm = () => {
               required
             />
           </div>
-          <div className="bux-mar-bottom-sp-16">
+          <div className="sb-mar-bottom-sp-16">
             <label htmlFor="newConceptDescription">Concept Description *</label>
             <QuillEditor
               ref={newConceptDescriptionRef}
               placeholder="Description of the concept..."
             />
           </div>
-          <button type="submit" className="bux-button">
+          <button type="submit" className="sb-button">
             Add New Concept and Associate
           </button>
         </form>

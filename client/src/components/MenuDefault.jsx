@@ -17,38 +17,38 @@ function MenuDefault() {
         }
     };
 
-    return <div className="bux-menu-wrapper">
-        <div className="bux-container bux-grid bux-container__menu">
+    return <div className="sb-menu-wrapper">
+        <div className="sb-container sb-grid sb-container__menu">
             <nav
-                id="bux-main-menu"
+                id="sb-main-menu"
                 aria-label="Main Navigation"
                 className="disclosure-nav disclosure-nav-orientation-horizontal"
             >
-                <ul className="bux-menu">
-                    <li className="bux-menu__item">
+                <ul className="sb-menu">
+                    <li className="sb-menu__item">
                         <NavLink to="/"
                             end
                             className={({ isActive }) =>
-                                `bux-menu__link ${isActive ? 'bux-menu__link--active' : ''}`
+                                `sb-menu__link ${isActive ? 'sb-menu__link--active' : ''}`
                             }
                             onClick={handleNavClick}
                         >Home </NavLink>
                     </li>
-                    <li className="bux-menu__item">
+                    <li className="sb-menu__item">
                         <NavLink
                             to="/concepts"
                             end
                             className={({ isActive }) =>
-                                `bux-menu__link ${isActive ? 'bux-menu__link--active' : ''}`
+                                `sb-menu__link ${isActive ? 'sb-menu__link--active' : ''}`
                             }
                             onClick={handleNavClick}
                         >Concept Crunch</NavLink>
                     </li>
-                    <li className="bux-menu__item">
+                    <li className="sb-menu__item">
                         <NavLink to="/dashboard"
                             end
                             className={({ isActive }) =>
-                                `bux-menu__link ${isActive ? 'bux-menu__link--active' : ''}`
+                                `sb-menu__link ${isActive ? 'sb-menu__link--active' : ''}`
                             }
                             onClick={handleNavClick}
                         >Dashboard</NavLink>

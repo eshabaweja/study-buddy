@@ -1,8 +1,8 @@
 import crypto from 'crypto';
 import pool from '../db/database.js';
 import {
-  getLiteLlmHeaders,
-  getLiteLlmUrl,
+  getLlmHeaders,
+  getLlmUrl,
   getVisionModel,
 } from '../config/llm.js';
 import { extractImageSrcs } from '../utils/extractQuestionImages.js';
@@ -58,9 +58,9 @@ async function callVisionDescribe(imageSrcs) {
     })),
   ];
 
-  const response = await fetch(getLiteLlmUrl(), {
+  const response = await fetch(getLlmUrl(), {
     method: 'POST',
-    headers: getLiteLlmHeaders(),
+    headers: getLlmHeaders(),
     body: JSON.stringify({
       model: getVisionModel(),
       messages: [
@@ -75,13 +75,13 @@ async function callVisionDescribe(imageSrcs) {
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`LiteLLM vision error: ${response.status} - ${errorText}`);
+    throw new Error(`LLM vision error: ${response.status} - ${errorText}`);
   }
 
   const completion = await response.json();
   const text = completion.choices?.[0]?.message?.content?.trim();
   if (!text) {
-    throw new Error('LiteLLM vision returned empty description');
+    throw new Error('LLM vision returned empty description');
   }
   return text;
 }

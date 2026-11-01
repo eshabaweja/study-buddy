@@ -43,13 +43,13 @@ function getCellClasses({ q, idx, currentIndex, solvedIds, starredIds, canReorde
   const isUnpublished = q.published === false;
   const isLastMoved = lastMovedQuestionId != null && id === lastMovedQuestionId;
   return [
-    "ba-question-grid__item",
-    isSolved ? "ba-question-grid__item--solved" : "",
-    isStarred ? "ba-question-grid__item--starred" : "",
-    isUnpublished ? "ba-question-grid__item--unpublished" : "",
-    idx === currentIndex ? "ba-question-grid__item--current" : "",
-    canReorder ? "ba-question-grid__item--draggable" : "",
-    isLastMoved ? "ba-question-grid__item--last-moved" : "",
+    "app-question-grid__item",
+    isSolved ? "app-question-grid__item--solved" : "",
+    isStarred ? "app-question-grid__item--starred" : "",
+    isUnpublished ? "app-question-grid__item--unpublished" : "",
+    idx === currentIndex ? "app-question-grid__item--current" : "",
+    canReorder ? "app-question-grid__item--draggable" : "",
+    isLastMoved ? "app-question-grid__item--last-moved" : "",
   ]
     .filter(Boolean)
     .join(" ");
@@ -71,7 +71,7 @@ function QuestionGridCell({
   });
 
   return (
-    <div className="ba-question-grid__cell">
+    <div className="app-question-grid__cell">
       <button
         className={classes}
         onClick={() => onSelect && onSelect(idx)}
@@ -79,7 +79,7 @@ function QuestionGridCell({
         title={gridTitle(q, showInstructorNumbers)}
         type="button"
       >
-        <span className="ba-question-grid__number">
+        <span className="app-question-grid__number">
           {gridLabel(q, showInstructorNumbers)}
         </span>
       </button>
@@ -122,8 +122,8 @@ function SortableQuestionGridCell({
       ref={setNodeRef}
       style={style}
       className={[
-        "ba-question-grid__cell",
-        isDragging ? "ba-question-grid__cell--dragging" : "",
+        "app-question-grid__cell",
+        isDragging ? "app-question-grid__cell--dragging" : "",
       ]
         .filter(Boolean)
         .join(" ")}
@@ -141,7 +141,7 @@ function SortableQuestionGridCell({
         {...attributes}
         {...listeners}
       >
-        <span className="ba-question-grid__number">
+        <span className="app-question-grid__number">
           {gridLabel(q, showInstructorNumbers)}
         </span>
       </button>
@@ -235,7 +235,7 @@ function QuestionGrid({
         items={safeQuestions.map((q) => q.id)}
         strategy={rectSortingStrategy}
       >
-        <div className="ba-question-grid__grid" title="Navigate between questions">
+        <div className="app-question-grid__grid" title="Navigate between questions">
           {safeQuestions.map((q, idx) => (
             <SortableQuestionGridCell key={q.id} {...cellProps(q, idx)} />
           ))}
@@ -243,7 +243,7 @@ function QuestionGrid({
       </SortableContext>
     </DndContext>
   ) : (
-    <div className="ba-question-grid__grid" title="Navigate between questions">
+    <div className="app-question-grid__grid" title="Navigate between questions">
       {safeQuestions.map((q, idx) => (
         <QuestionGridCell key={q.id} {...cellProps(q, idx)} />
       ))}
@@ -251,11 +251,11 @@ function QuestionGrid({
   );
 
   return (
-    <div className="ba-question-grid bux-mar-top-sp-16 bux-mar-bottom-sp-16">
-      <div className="ba-question-grid__scroller">
-        <h6 className="bux-mar-all-sp-8">Navigate between questions</h6>
+    <div className="app-question-grid sb-mar-top-sp-16 sb-mar-bottom-sp-16">
+      <div className="app-question-grid__scroller">
+        <h6 className="sb-mar-all-sp-8">Navigate between questions</h6>
         {canReorder && (
-          <p className="ba-question-grid__reorder-hint bux-mar-left-sp-8 bux-mar-right-sp-8">
+          <p className="app-question-grid__reorder-hint sb-mar-left-sp-8 sb-mar-right-sp-8">
             Drag numbers to reorder questions for students.
           </p>
         )}

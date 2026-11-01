@@ -36,8 +36,8 @@ function ConceptCrunch() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="bux-container">
-      <div className="ba-card-collection bux-mar-bottom-sp-32">
+    <div className="sb-container">
+      <div className="app-card-collection sb-mar-bottom-sp-32">
         {courses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}

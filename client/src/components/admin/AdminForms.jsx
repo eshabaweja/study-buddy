@@ -61,16 +61,16 @@ function CourseSearchPicker({
   };
 
   return (
-    <div className="ba-quiz-form__field ba-course-search">
-      <label className="bux-label" htmlFor={id}>
+    <div className="app-quiz-form__field app-course-search">
+      <label className="sb-label" htmlFor={id}>
         {label}
       </label>
       {selected ? (
-        <div className="ba-course-search__selected">
+        <div className="app-course-search__selected">
           <span>{courseLabel(selected)}</span>
           <button
             type="button"
-            className="bux-button bux-button--secondary bux-button--small"
+            className="sb-button sb-button--secondary sb-button--small"
             onClick={handleClear}
           >
             Clear
@@ -81,7 +81,7 @@ function CourseSearchPicker({
           <input
             id={id}
             type="search"
-            className="bux-text-field"
+            className="sb-text-field"
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -91,15 +91,15 @@ function CourseSearchPicker({
             placeholder="Search by code, title, or instructor"
           />
           {showResults && query.trim() && (
-            <ul className="ba-course-search__results">
+            <ul className="app-course-search__results">
               {filtered.length === 0 ? (
-                <li className="ba-course-search__empty">No courses match your search.</li>
+                <li className="app-course-search__empty">No courses match your search.</li>
               ) : (
                 filtered.map((course) => (
-                  <li key={course.id} className="ba-course-search__result">
+                  <li key={course.id} className="app-course-search__result">
                     <button
                       type="button"
-                      className="ba-course-search__result-btn"
+                      className="app-course-search__result-btn"
                       onClick={() => handleSelect(course)}
                     >
                       {courseLabel(course)}
@@ -135,26 +135,26 @@ export function AdminPromoteInstructorForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bux-form">
-      <p className="ba-quiz-form__hint">
+    <form onSubmit={handleSubmit} className="sb-form">
+      <p className="app-quiz-form__hint">
         Grant instructor access by email. User must already have an account.
       </p>
-      <div className="ba-quiz-form__field">
-        <label className="bux-label" htmlFor="promote-email">
+      <div className="app-quiz-form__field">
+        <label className="sb-label" htmlFor="promote-email">
           User email
         </label>
         <input
           id="promote-email"
           type="email"
-          className="bux-text-field"
+          className="sb-text-field"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="user@example.com"
           required
         />
       </div>
-      <div className="ba-quiz-form__actions">
-        <button type="submit" className="bux-button" disabled={loading}>
+      <div className="app-quiz-form__actions">
+        <button type="submit" className="sb-button" disabled={loading}>
           {loading ? 'Saving…' : 'Grant instructor role'}
         </button>
       </div>
@@ -191,15 +191,15 @@ export function AdminEnrollStudentForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bux-form">
-      <div className="ba-quiz-form__field">
-        <label className="bux-label" htmlFor="enroll-email">
+    <form onSubmit={handleSubmit} className="sb-form">
+      <div className="app-quiz-form__field">
+        <label className="sb-label" htmlFor="enroll-email">
           Student email
         </label>
         <input
           id="enroll-email"
           type="email"
-          className="bux-text-field"
+          className="sb-text-field"
           value={userEmail}
           onChange={(e) => setUserEmail(e.target.value)}
           required
@@ -213,8 +213,8 @@ export function AdminEnrollStudentForm() {
         value={courseId}
         onChange={setCourseId}
       />
-      <div className="ba-quiz-form__actions">
-        <button type="submit" className="bux-button" disabled={loading || !courseId}>
+      <div className="app-quiz-form__actions">
+        <button type="submit" className="sb-button" disabled={loading || !courseId}>
           {loading ? 'Enrolling…' : 'Enroll student'}
         </button>
       </div>
@@ -249,15 +249,15 @@ export function AdminUnenrollStudentForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bux-form">
-      <div className="ba-quiz-form__field">
-        <label className="bux-label" htmlFor="unenroll-email">
+    <form onSubmit={handleSubmit} className="sb-form">
+      <div className="app-quiz-form__field">
+        <label className="sb-label" htmlFor="unenroll-email">
           Student email
         </label>
         <input
           id="unenroll-email"
           type="email"
-          className="bux-text-field"
+          className="sb-text-field"
           value={userEmail}
           onChange={(e) => setUserEmail(e.target.value)}
           required
@@ -271,8 +271,8 @@ export function AdminUnenrollStudentForm() {
         value={courseId}
         onChange={setCourseId}
       />
-      <div className="ba-quiz-form__actions">
-        <button type="submit" className="bux-button" disabled={loading || !courseId}>
+      <div className="app-quiz-form__actions">
+        <button type="submit" className="sb-button" disabled={loading || !courseId}>
           {loading ? 'Removing…' : 'Unenroll student'}
         </button>
       </div>
@@ -313,8 +313,8 @@ export function AdminDeleteCourseForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bux-form">
-      <p className="ba-quiz-form__hint">
+    <form onSubmit={handleSubmit} className="sb-form">
+      <p className="app-quiz-form__hint">
         Permanently remove a course and its content. This cannot be undone.
       </p>
       <CourseSearchPicker
@@ -325,8 +325,8 @@ export function AdminDeleteCourseForm() {
         value={courseId}
         onChange={setCourseId}
       />
-      <div className="ba-quiz-form__actions">
-        <button type="submit" className="bux-button" disabled={loading || !courseId}>
+      <div className="app-quiz-form__actions">
+        <button type="submit" className="sb-button" disabled={loading || !courseId}>
           {loading ? 'Deleting…' : 'Delete course'}
         </button>
       </div>
@@ -376,8 +376,8 @@ export function AdminCopyCourseForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bux-form">
-      <p className="ba-quiz-form__hint">
+    <form onSubmit={handleSubmit} className="sb-form">
+      <p className="app-quiz-form__hint">
         Duplicate a course (concepts, questions, images). Enrollments are not copied.
       </p>
       <CourseSearchPicker
@@ -388,39 +388,39 @@ export function AdminCopyCourseForm() {
         value={sourceCourseId}
         onChange={setSourceCourseId}
       />
-      <div className="ba-quiz-form__row-2">
-        <div className="ba-quiz-form__field">
-          <label className="bux-label" htmlFor="copy-code">
+      <div className="app-quiz-form__row-2">
+        <div className="app-quiz-form__field">
+          <label className="sb-label" htmlFor="copy-code">
             New course code
           </label>
           <input
             id="copy-code"
-            className="bux-text-field"
+            className="sb-text-field"
             value={newCode}
             onChange={(e) => setNewCode(e.target.value)}
             required
           />
         </div>
-        <div className="ba-quiz-form__field">
-          <label className="bux-label" htmlFor="copy-title">
+        <div className="app-quiz-form__field">
+          <label className="sb-label" htmlFor="copy-title">
             New title
           </label>
           <input
             id="copy-title"
-            className="bux-text-field"
+            className="sb-text-field"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             required
           />
         </div>
       </div>
-      <div className="ba-quiz-form__field">
-        <label className="bux-label" htmlFor="copy-instructor">
+      <div className="app-quiz-form__field">
+        <label className="sb-label" htmlFor="copy-instructor">
           Owner (instructor email)
         </label>
         <input
           id="copy-instructor"
-          className="bux-text-field"
+          className="sb-text-field"
           list="instructor-emails"
           value={instructorEmail}
           onChange={(e) => setInstructorEmail(e.target.value)}
@@ -432,10 +432,10 @@ export function AdminCopyCourseForm() {
           ))}
         </datalist>
       </div>
-      <div className="ba-quiz-form__actions">
+      <div className="app-quiz-form__actions">
         <button
           type="submit"
-          className="bux-button"
+          className="sb-button"
           disabled={loading || !sourceCourseId}
         >
           {loading ? 'Copying…' : 'Duplicate course'}

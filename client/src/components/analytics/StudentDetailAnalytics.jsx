@@ -26,10 +26,10 @@ function StudentDetailAnalytics() {
 
   if (loading) {
     return (
-      <div className="bux-mar-top-sp-16">
+      <div className="sb-mar-top-sp-16">
         <button 
           onClick={() => navigate('/dashboard')}
-          className="bux-button bux-button--secondary bux-mar-bottom-sp-16"
+          className="sb-button sb-button--secondary sb-mar-bottom-sp-16"
         >
           ← Back to Dashboard
         </button>
@@ -40,10 +40,10 @@ function StudentDetailAnalytics() {
 
   if (error) {
     return (
-      <div className="bux-mar-top-sp-16">
+      <div className="sb-mar-top-sp-16">
         <button 
           onClick={() => navigate('/dashboard')}
-          className="bux-button bux-button--secondary bux-mar-bottom-sp-16"
+          className="sb-button sb-button--secondary sb-mar-bottom-sp-16"
         >
           ← Back to Dashboard
         </button>
@@ -54,10 +54,10 @@ function StudentDetailAnalytics() {
 
   if (!studentData) {
     return (
-      <div className="bux-mar-top-sp-16">
+      <div className="sb-mar-top-sp-16">
         <button 
           onClick={() => navigate('/dashboard')}
-          className="bux-button bux-button--secondary bux-mar-bottom-sp-16"
+          className="sb-button sb-button--secondary sb-mar-bottom-sp-16"
         >
           ← Back to Dashboard
         </button>
@@ -83,26 +83,26 @@ function StudentDetailAnalytics() {
   );
 
   return (
-    <div className="bux-container">
-      <div className="bux-mar-top-sp-16">
+    <div className="sb-container">
+      <div className="sb-mar-top-sp-16">
         <button 
           onClick={() => navigate('/dashboard')}
-          className="bux-button bux-button--secondary bux-mar-bottom-sp-16"
+          className="sb-button sb-button--secondary sb-mar-bottom-sp-16"
         >
           ← Back to Dashboard
         </button>
         
         <h2>{studentData.student.name}</h2>
-        <small className="bux-text-sm bux-text-muted">{studentData.student.email}</small>
+        <small className="sb-text-sm sb-text-muted">{studentData.student.email}</small>
 
         {!studentData.courses || studentData.courses.length === 0 ? (
-          <div className="bux-mar-top-sp-16">
+          <div className="sb-mar-top-sp-16">
             <p>No courses found for this student</p>
           </div>
         ) : (
           <>
             {/* Course Tabs */}
-            <div className="bux-mar-top-sp-16">
+            <div className="sb-mar-top-sp-16">
               {studentData.courses.map((course, index) => (
                 <h4
                   key={course.code}
@@ -116,20 +116,20 @@ function StudentDetailAnalytics() {
             {/* Active Course Stats */}
             {activeCourse && (
               <>
-                <div className="bux-grid bux-grid--no-gutters bux-mar-top-sp-16">
-                  <div className="bux-grid__cell--12 bux-grid__cell--4@md">
+                <div className="sb-grid sb-grid--no-gutters sb-mar-top-sp-16">
+                  <div className="sb-grid__cell--12 sb-grid__cell--4@md">
                     <div>
                       <div style={{ fontWeight: 'bold' }}>Progress</div>
                       <div style={{ fontSize: '2rem', color: '#B12635' }}>{activeCourse.progress_percentage}%</div>
                     </div>
                   </div>
-                  <div className="bux-grid__cell--12 bux-grid__cell--4@md">
+                  <div className="sb-grid__cell--12 sb-grid__cell--4@md">
                     <div>
                       <div style={{ fontWeight: 'bold' }}>Solved Questions</div>
                       <div style={{ fontSize: '2rem', color: '#B12635' }}>{activeCourse.solved_count}</div>
                     </div>
                   </div>
-                  <div className="bux-grid__cell--12 bux-grid__cell--4@md">
+                  <div className="sb-grid__cell--12 sb-grid__cell--4@md">
                     <div>
                       <div style={{ fontWeight: 'bold' }}>Starred Questions</div>
                       <div style={{ fontSize: '2rem', color: '#B12635' }}>{activeCourse.starred_count}</div>
@@ -139,9 +139,9 @@ function StudentDetailAnalytics() {
 
                 {/* Question Grid */}
                 {activeCourse.questions && activeCourse.questions.length > 0 && (
-                  <div className="bux-mar-top-sp-24">
+                  <div className="sb-mar-top-sp-24">
                     <h4>Questions Overview</h4>
-                    <p className="bux-text-sm bux-text-muted">
+                    <p className="sb-text-sm sb-text-muted">
                       Green = Solved, Yellow = Starred for Review
                     </p>
                     <QuestionGrid

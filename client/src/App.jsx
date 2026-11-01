@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 // import { useState } from 'react';
 // import LandingPage from './pages/LandingPage';
-import { BaRoutes } from './BaRoutes';
-import OsuNavbar from "./components/OsuNavbar"
+import { AppRoutes } from './AppRoutes';
 import Header from "./components/Header"
 import MenuDefault from "./components/MenuDefault"
 import FooterDefault from './components/FooterDefault';
@@ -12,9 +11,9 @@ import { ToastContainer } from 'react-toastify';
 function App() {
   // const [count, setCount] = useState(0)
   useEffect(() => {
-    // Dynamically add <script> tag to load bux.js
+    // Dynamically add <script> tag to load ui.js
     const script = document.createElement("script");
-    script.src = "/js/bux.js";
+    script.src = "/js/ui.js";
     script.type = "text/javascript";
     script.async = true;
 
@@ -28,10 +27,9 @@ function App() {
   
   return (
     <AuthProvider>
-      <OsuNavbar/>
       <Header/>
       <MenuDefault/>
-      <BaRoutes/>
+      <AppRoutes/>
       <FooterDefault/>
       <ToastContainer/>
     </AuthProvider>

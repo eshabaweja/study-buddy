@@ -87,31 +87,31 @@ function StudentPage() {
 
   if (!isAuthenticated) {
     return (
-      <div className="bux-container">
+      <div className="sb-container">
         <p>Please log in to view your dashboard.</p>
       </div>
     );
   }
 
-  if (loading) return <div className="bux-container">Loading your progress...</div>;
-  if (error) return <div className="bux-container">Error: {error}</div>;
+  if (loading) return <div className="sb-container">Loading your progress...</div>;
+  if (error) return <div className="sb-container">Error: {error}</div>;
 
   return (
-    <div className="ba-dashboard">
-      <div className="bux-grid bux-mar-bottom-sp-16">
-          <h3 className="bux-grid__cell--12@sm bux-grid__cell--6@md">My Courses</h3>
-          <h3 className="bux-grid__cell--6@md mobile-hidden">My Concepts</h3>
+    <div className="app-dashboard">
+      <div className="sb-grid sb-mar-bottom-sp-16">
+          <h3 className="sb-grid__cell--12@sm sb-grid__cell--6@md">My Courses</h3>
+          <h3 className="sb-grid__cell--6@md mobile-hidden">My Concepts</h3>
 
           {trackedCourses.length > 0 ? (
             <>
               {trackedCourses.map((course) => (
-                <div key={course.id} className="bux-grid bux-grid__cell--12 bux-mar-bottom-sp-16">
-                  <div className="bux-grid__cell bux-grid__cell--12@sm bux-grid__cell--6@md">
+                <div key={course.id} className="sb-grid sb-grid__cell--12 sb-mar-bottom-sp-16">
+                  <div className="sb-grid__cell sb-grid__cell--12@sm sb-grid__cell--6@md">
                     <CourseCard course={course} onDashboard />
                   </div>
-                  <div className="bux-grid__cell bux-grid__cell--12@sm bux-grid__cell--6@md">
+                  <div className="sb-grid__cell sb-grid__cell--12@sm sb-grid__cell--6@md">
                     {courseConcepts[course.code]?.length > 0 ? (
-                      <div className="bux-grid">
+                      <div className="sb-grid">
                         {courseConcepts[course.code].map((concept) => {
                           const progress = conceptProgress[concept.id] || { percentage: 0, solved: 0, total: 0 };
                           return (
@@ -131,9 +131,9 @@ function StudentPage() {
               ))}
             </>
           ) : (
-            <p className="bux-mar-top-sp-16">
+            <p className="sb-mar-top-sp-16">
               You haven't started tracking any courses yet. 
-              <Link to="/concepts" className="bux-link bux-mar-left-sp-8">
+              <Link to="/concepts" className="sb-link sb-mar-left-sp-8">
                 Browse available courses
               </Link>
             </p>

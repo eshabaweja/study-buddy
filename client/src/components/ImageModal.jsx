@@ -5,22 +5,22 @@ const ImageModal = ({ isOpen, onClose, imageUrl, altText }) => {
 
   return createPortal(
     <div
-      className="ba-modal-overlay"
+      className="app-modal-overlay"
       onClick={onClose}
     >
       <div
-        className="ba-modal-content"
+        className="app-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
         <img
           src={imageUrl}
           alt={altText}
-          className="ba-modal-image"
+          className="app-modal-image"
         />
         <button
           type="button"
           onClick={onClose}
-          className="ba-modal-close-button"
+          className="app-modal-close-button"
         >
           ×
         </button>

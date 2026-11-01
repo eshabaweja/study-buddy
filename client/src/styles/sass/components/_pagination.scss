@@ -1,0 +1,90 @@
+
+@mixin pagination($link-color: $brand, $active-bg: $gray-light-80) {
+	font-family: $sans;
+	margin-top: 4px;
+
+	.sb-pagination__list {
+		list-style: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.sb-pagination__item {
+
+	}
+
+	.sb-pagination__link {
+		display: table-cell;
+		vertical-align: middle;
+		font-size: $ts-base;
+		font-weight: 600;
+		color: $link-color;
+		text-decoration: none;
+		height: 40px;
+		width: 40px;
+		padding: $sp-8;
+		text-align: center;
+
+		&:hover {
+			background-color: $active-bg;
+			color: $gray-dark-80;
+		}
+		&:focus {
+			position: relative;
+			outline: 2px solid $focus;
+		}
+	}
+
+	.sb-pagination__link--truncated {
+		&:hover {
+			background-color: $clear;
+			color: $link-color;
+		}
+	}
+
+	.sb-pagination__link--previous:before,
+	.sb-pagination__link--next:after {
+		font-family: $icon;
+		font-size: $ts-20;
+		line-height:0;
+		vertical-align: rem-calc(-5);
+	}
+
+	.sb-pagination__link--previous:before {
+		content: "\2039";
+		font-weight: 400;
+	}
+
+	.sb-pagination__link--next:after {
+		content: "\203A";
+		font-weight: 400;
+	}
+
+	.sb-pagination__link--truncated:before {
+		font-family: $icon;
+		content: "\00D7";
+		font-size: $ts-xs;
+		color: $gray-dark-80;
+	}
+
+	.sb-pagination__link--current {
+		background-color: $active-bg;
+		color: $gray-dark-80;
+		cursor: default;
+		border-bottom: $sp-4 $brand solid;
+		padding-bottom: $sp-4;
+	}
+}
+
+.sb-pagination {
+	@include pagination();
+}
+
+.sb-pagination--alt {
+	@include pagination($brand, $white);
+}
+
+.sb-pagination--reverse {
+	@include pagination($white, $white);
+}

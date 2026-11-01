@@ -254,8 +254,8 @@ export default function QuizEditor({
 
   if (loadingQuiz) {
     return (
-      <div className="ba-quiz-editor ba-card bux-mar-top-sp-16">
-        <div className="ba-card__content">Loading quiz…</div>
+      <div className="app-quiz-editor app-card sb-mar-top-sp-16">
+        <div className="app-card__content">Loading quiz…</div>
       </div>
     );
   }
@@ -263,32 +263,32 @@ export default function QuizEditor({
   const previewUrl = quizId ? `/instructor/quizzes/${quizId}/preview` : null;
 
   return (
-    <div className="ba-quiz-editor ba-card bux-mar-top-sp-16 bux-mar-bottom-sp-16">
-      <div className="ba-card__content">
-        <div className="ba-quiz-editor__topbar">
+    <div className="app-quiz-editor app-card sb-mar-top-sp-16 sb-mar-bottom-sp-16">
+      <div className="app-card__content">
+        <div className="app-quiz-editor__topbar">
           <div>
-            <h3 className="ba-card__heading">
+            <h3 className="app-card__heading">
               {quizId ? `Edit quiz${metadata.title ? `: ${metadata.title}` : ''}` : 'New quiz'}
             </h3>
             {isDirty && (
-              <span className="ba-quiz-editor__unsaved">Unsaved changes</span>
+              <span className="app-quiz-editor__unsaved">Unsaved changes</span>
             )}
             {!isDirty && quizId && (
-              <span className="ba-quiz-editor__saved">Saved</span>
+              <span className="app-quiz-editor__saved">Saved</span>
             )}
           </div>
-          <div className="ba-quiz-editor__topbar-actions">
+          <div className="app-quiz-editor__topbar-actions">
             {quizId && (
               <Link
                 to={`/instructor/quizzes/${quizId}/submissions`}
-                className="bux-button bux-button--small"
+                className="sb-button sb-button--small"
               >
                 View submissions
               </Link>
             )}
             <button
               type="button"
-              className="bux-button--alt-small"
+              className="sb-button--alt-small"
               onClick={resetDraft}
               disabled={saving || deleting}
             >
@@ -297,7 +297,7 @@ export default function QuizEditor({
             {quizId && (
               <button
                 type="button"
-                className="bux-button--alt-small ba-quiz-editor__delete-btn"
+                className="sb-button--alt-small app-quiz-editor__delete-btn"
                 onClick={handleDeleteQuiz}
                 disabled={saving || deleting}
               >
@@ -307,10 +307,10 @@ export default function QuizEditor({
           </div>
         </div>
 
-        <div className="bux-form bux-mar-top-sp-16">
-          <label className="bux-label">Course</label>
+        <div className="sb-form sb-mar-top-sp-16">
+          <label className="sb-label">Course</label>
           <select
-            className="bux-select bux-mar-bottom-sp-16"
+            className="sb-select sb-mar-bottom-sp-16"
             value={metadata.courseId}
             onChange={(e) => {
               const courseId = e.target.value;
@@ -333,15 +333,15 @@ export default function QuizEditor({
             ))}
           </select>
 
-          <label className="bux-label">Title</label>
+          <label className="sb-label">Title</label>
           <input
-            className="bux-text-field bux-mar-bottom-sp-16"
+            className="sb-text-field sb-mar-bottom-sp-16"
             value={metadata.title}
             onChange={(e) => updateMetadata({ title: e.target.value })}
           />
 
-          <label className="bux-label bux-mar-bottom-sp-8">Description (optional)</label>
-          <div className="ba-quiz-editor__description bux-mar-bottom-sp-16">
+          <label className="sb-label sb-mar-bottom-sp-8">Description (optional)</label>
+          <div className="app-quiz-editor__description sb-mar-bottom-sp-16">
             <QuillEditor
               key={`quiz-description-${quizId ?? `new-${metadata.courseId}`}`}
               ref={descriptionRef}
@@ -353,30 +353,30 @@ export default function QuizEditor({
             />
           </div>
 
-          <label className="bux-label">Opens</label>
+          <label className="sb-label">Opens</label>
           <input
             type="datetime-local"
-            className="bux-text-field bux-mar-bottom-sp-16"
+            className="sb-text-field sb-mar-bottom-sp-16"
             value={metadata.opensAt}
             onChange={(e) => updateMetadata({ opensAt: e.target.value })}
           />
 
-          <label className="bux-label">Closes</label>
+          <label className="sb-label">Closes</label>
           <input
             type="datetime-local"
-            className="bux-text-field bux-mar-bottom-sp-16"
+            className="sb-text-field sb-mar-bottom-sp-16"
             value={metadata.closesAt}
             onChange={(e) => updateMetadata({ closesAt: e.target.value })}
           />
 
-          <div className="ba-quiz-editor__numeric-row bux-mar-bottom-sp-16">
-            <div className="ba-quiz-editor__numeric-field">
-              <label className="bux-flex bux-flex--align-center ba-quiz-editor__numeric-label">
+          <div className="app-quiz-editor__numeric-row sb-mar-bottom-sp-16">
+            <div className="app-quiz-editor__numeric-field">
+              <label className="sb-flex sb-flex--align-center app-quiz-editor__numeric-label">
                 <input
                   type="checkbox"
                   checked={metadata.hasTimeLimit}
                   onChange={(e) => updateMetadata({ hasTimeLimit: e.target.checked })}
-                  className="bux-mar-right-sp-8"
+                  className="sb-mar-right-sp-8"
                 />
                 Time limit (minutes)
               </label>
@@ -384,19 +384,19 @@ export default function QuizEditor({
                 <input
                   type="number"
                   min={1}
-                  className="bux-text-field ba-input-narrow"
+                  className="sb-text-field app-input-narrow"
                   value={metadata.timeLimitMinutes}
                   onChange={(e) => updateMetadata({ timeLimitMinutes: e.target.value })}
                 />
               )}
             </div>
 
-            <div className="ba-quiz-editor__numeric-field">
-              <label className="bux-label ba-quiz-editor__numeric-label">Attempts allowed</label>
+            <div className="app-quiz-editor__numeric-field">
+              <label className="sb-label app-quiz-editor__numeric-label">Attempts allowed</label>
               <input
                 type="number"
                 min={1}
-                className="bux-text-field ba-input-narrow"
+                className="sb-text-field app-input-narrow"
                 value={metadata.maxAttempts}
                 onChange={(e) => updateMetadata({ maxAttempts: e.target.value })}
               />
@@ -404,10 +404,10 @@ export default function QuizEditor({
           </div>
         </div>
 
-        <div className="ba-quiz-editor__questions bux-mar-top-sp-24">
-          <h4 className="bux-card__heading">Questions</h4>
+        <div className="app-quiz-editor__questions sb-mar-top-sp-24">
+          <h4 className="sb-card__heading">Questions</h4>
           {items.length === 0 ? (
-            <p className="bux-mar-top-sp-8">No questions yet. Add one below.</p>
+            <p className="sb-mar-top-sp-8">No questions yet. Add one below.</p>
           ) : (
             <QuizQuestionList
               items={items}
@@ -424,9 +424,9 @@ export default function QuizEditor({
             />
           )}
 
-          <div className="ba-quiz-editor__add-question bux-mar-top-sp-16">
+          <div className="app-quiz-editor__add-question sb-mar-top-sp-16">
             <select
-              className="bux-select"
+              className="sb-select"
               value={addType}
               onChange={(e) => setAddType(e.target.value)}
               aria-label="New question type"
@@ -437,18 +437,18 @@ export default function QuizEditor({
             </select>
             <button
               type="button"
-              className="bux-button ba-quiz-editor__add-btn"
+              className="sb-button app-quiz-editor__add-btn"
               onClick={handleAddQuestion}
             >
               + Add question
             </button>
           </div>
 
-          <div className="ba-quiz-editor__footer-actions bux-mar-top-sp-24">
+          <div className="app-quiz-editor__footer-actions sb-mar-top-sp-24">
             {quizId && (
               <button
                 type="button"
-                className="bux-button--alt-small"
+                className="sb-button--alt-small"
                 onClick={handlePublishScores}
                 disabled={saving || deleting || publishingScores}
               >
@@ -460,7 +460,7 @@ export default function QuizEditor({
             {previewUrl && (
               <Link
                 to={previewUrl}
-                className="bux-button--alt-small"
+                className="sb-button--alt-small"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -469,7 +469,7 @@ export default function QuizEditor({
             )}
             <button
               type="button"
-              className="bux-button"
+              className="sb-button"
               onClick={handleSave}
               disabled={saving || deleting || publishingScores}
             >

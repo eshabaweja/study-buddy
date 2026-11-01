@@ -1,0 +1,24 @@
+
+.sb-text-area {
+  @include form-element;
+
+  &__text-area {
+    @include form-input;
+
+    &:focus {
+      outline: 2px solid $focus;
+    }
+
+    &--disabled {
+      @include form-input-disabled;
+    }
+
+    &--error {
+      @include form-input-error;
+    }
+  }
+
+  &__error-message {
+    @include form-error-message;
+  }
+}

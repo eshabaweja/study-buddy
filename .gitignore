@@ -62,19 +62,11 @@ images/placeholders/
 # Ignore test files
 test/
 
-# amplify
-.amplify
-amplify_outputs*
-amplifyconfiguration*
 secrets/
 *.old
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
 
 dumps/
 uploads/
-buckeye_academy.db
+study_buddy.db
 .cursor
 migrations/

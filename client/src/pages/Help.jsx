@@ -1,7 +1,7 @@
 function Help() {
   return (
     <>
-      <div className="bux-container">Welcome to Buckademy Help.</div>
+      <div className="sb-container">Welcome to Study Buddy Help.</div>
     </>
   );
 }

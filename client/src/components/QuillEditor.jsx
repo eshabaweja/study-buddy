@@ -19,7 +19,7 @@ const TOOLBAR_CONTAINER = [
 ];
 const BaseImage = Quill.import('formats/image');
 
-class BuckademyImage extends BaseImage {
+class StudyBuddyImage extends BaseImage {
   static match(url) {
     if (typeof url !== 'string') return false;
     return (
@@ -30,7 +30,7 @@ class BuckademyImage extends BaseImage {
   }
 }
 
-Quill.register(BuckademyImage, true);
+Quill.register(StudyBuddyImage, true);
 
 /** Inline data URLs so `question_text` / concept HTML store images without S3 or a separate GET API. */
 function makeImageHandler(quill) {
@@ -163,7 +163,7 @@ const QuillEditor = forwardRef(
       applyDefaultValueToQuill(ref.current, defaultValue);
     }, [ref, defaultValue]);
 
-    return <div ref={containerRef} className="ba-quill-wrapper" />;
+    return <div ref={containerRef} className="app-quill-wrapper" />;
   },
 );
 

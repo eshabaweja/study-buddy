@@ -168,28 +168,28 @@ function Question({
       {question.published !== false && displayStudentNumber != null ? (
         <>
           Question {displayStudentNumber}/{displayPublishedCount}
-          <span className="ba-question-meta"> (student)</span>
+          <span className="app-question-meta"> (student)</span>
           {' · '}
         </>
       ) : (
         <>
-          <span className="ba-question-meta">Unpublished · </span>
+          <span className="app-question-meta">Unpublished · </span>
         </>
       )}
       #{displayCourseNumber}/{displayCourseCount}
-      <span className="ba-question-meta"> (course)</span>
+      <span className="app-question-meta"> (course)</span>
     </>
   ) : (
     <>Question {displayStudentNumber}/{displayPublishedCount}</>
   );
 
   return (
-    <div className="bux-mar-top-sp-32 bux-mar-bottom-sp-32">
-      <div className="bux-grid">
-        <div className="ba-card bux-grid__cell bux-grid__cell--12">
-          <div className="bux-grid" title="Question">
-            <div className="bux-grid__cell bux-grid__cell--12 bux-flex bux-flex--align-center">
-              <div className="bux-card__heading ba-limit-width ba-question-header-tools">
+    <div className="sb-mar-top-sp-32 sb-mar-bottom-sp-32">
+      <div className="sb-grid">
+        <div className="app-card sb-grid__cell sb-grid__cell--12">
+          <div className="sb-grid" title="Question">
+            <div className="sb-grid__cell sb-grid__cell--12 sb-flex sb-flex--align-center">
+              <div className="sb-card__heading app-limit-width app-question-header-tools">
                 {questionTitle}
                 {showStudentProgressUi && (
                   <button
@@ -205,7 +205,7 @@ function Question({
                   <>
                     <button
                       type="button"
-                      className={`ba-question-instructor__btn${question.published === false ? ' ba-question-instructor__btn--unpublished' : ''}`}
+                      className={`app-question-instructor__btn${question.published === false ? ' app-question-instructor__btn--unpublished' : ''}`}
                       disabled={publishLoading}
                       onClick={async () => {
                         const nextPublished = question.published === false;
@@ -227,7 +227,7 @@ function Question({
                     </button>
                     <button
                       type="button"
-                      className="ba-question-instructor__btn"
+                      className="app-question-instructor__btn"
                       onClick={onEdit}
                       title="Edit question"
                       aria-label="Edit question"
@@ -236,7 +236,7 @@ function Question({
                     </button>
                     <button
                       type="button"
-                      className="ba-question-instructor__btn ba-question-instructor__btn--danger"
+                      className="app-question-instructor__btn app-question-instructor__btn--danger"
                       onClick={onDelete}
                       title="Delete question"
                       aria-label="Delete question"
@@ -248,26 +248,26 @@ function Question({
               </div>
             </div>
 
-            <div className="bux-grid__cell bux-grid__cell--12 bux-paragraph bux-mar-bottom-sp-16">
+            <div className="sb-grid__cell sb-grid__cell--12 sb-paragraph sb-mar-bottom-sp-16">
               <RichTextContent
                 html={question.questionText}
-                className="bux-mar-bottom-sp-16 ba-question-figures"
+                className="sb-mar-bottom-sp-16 app-question-figures"
                 onImageClick={({ url, alt }) => openImageModal(url, alt)}
               />
             </div>
 
             {canEdit && !isEditing && (
-              <div className="bux-grid__cell bux-grid__cell--12 bux-mar-bottom-sp-16">
-                <h3 className="bux-card__heading">Figure description (for Brutus)</h3>
+              <div className="sb-grid__cell sb-grid__cell--12 sb-mar-bottom-sp-16">
+                <h3 className="sb-card__heading">Figure description (for Study Buddy)</h3>
                 {question.figureDescription?.trim() ? (
-                  <div className="bux-paragraph ba-figure-description">
+                  <div className="sb-paragraph app-figure-description">
                     <RichTextContent
                       html={markdownToHtml(question.figureDescription)}
                       normalizePlainText={false}
                     />
                   </div>
                 ) : (
-                  <div className="bux-paragraph">
+                  <div className="sb-paragraph">
                     <span style={{ color: "#666", fontStyle: "italic" }}>
                       None yet. Click edit to add one or regenerate from figures.
                     </span>
@@ -276,29 +276,29 @@ function Question({
               </div>
             )}
 
-            <div className="bux-grid__cell bux-grid__cell--12 bux-grid__cell--8@md  bux-mar-top-sp-16">
+            <div className="sb-grid__cell sb-grid__cell--12 sb-grid__cell--8@md  sb-mar-top-sp-16">
               <button
-                id="ba-btn-prev"
-                className="bux-button--alt bux-mar-right-sp-8"
+                id="app-btn-prev"
+                className="sb-button--alt sb-mar-right-sp-8"
                 onClick={onPrevious}
                 disabled={currentIndex === 0}
               >
                 Previous
               </button>
               <button 
-                id="ba-btn-next" 
-                className="bux-button"
+                id="app-btn-next" 
+                className="sb-button"
                 onClick={onNext}
                 disabled={currentIndex === totalQuestions - 1}
               >
                 Next
               </button>
             </div>
-            <div className="bux-grid__cell bux-grid__cell--12 bux-grid__cell--4@md  bux-mar-top-sp-16">
+            <div className="sb-grid__cell sb-grid__cell--12 sb-grid__cell--4@md  sb-mar-top-sp-16">
             {showStudentProgressUi && (
-                <div className="bux-flex bux-flex--direction-column bux-flex--gap-sp-8">
+                <div className="sb-flex sb-flex--direction-column sb-flex--gap-sp-8">
                   <button
-                    className={`${isSolved ? 'ba-button ba-button__solved' : 'ba-button ba-button__unsolved'} ba-nowrap`}
+                    className={`${isSolved ? 'app-button app-button__solved' : 'app-button app-button__unsolved'} app-nowrap`}
                     onClick={handleSolveQuestion}
                     disabled={isLoading}
                   >
@@ -311,12 +311,12 @@ function Question({
         </div>
         {!isQuizMode && asStudent && <Chatbot key={question.id} question={question} />}
         {!isQuizMode && (
-        <div className="bux-grid__cell bux-grid__cell--12 bux-mar-top-sp-16">
-          <h3 className="bux-card__heading">Goal</h3>
-          <div className="bux-paragraph">
+        <div className="sb-grid__cell sb-grid__cell--12 sb-mar-top-sp-16">
+          <h3 className="sb-card__heading">Goal</h3>
+          <div className="sb-paragraph">
             <RichTextContent
               html={question.goal}
-              className="ba-question-figures"
+              className="app-question-figures"
               onImageClick={({ url, alt }) => openImageModal(url, alt)}
             />
           </div>
@@ -324,15 +324,15 @@ function Question({
         )}
 
         {!isQuizMode && (
-        <div className="bux-grid__cell bux-grid__cell--12 bux-grid__cell--6@md bux-mar-top-sp-16">
-          <h3 className="bux-card__heading">Explicit Data</h3>
+        <div className="sb-grid__cell sb-grid__cell--12 sb-grid__cell--6@md sb-mar-top-sp-16">
+          <h3 className="sb-card__heading">Explicit Data</h3>
           <div
-            className={`bux-paragraph ba-interactive ${explicitIsBlurred ? "ba-blur" : ""}`}
+            className={`sb-paragraph app-interactive ${explicitIsBlurred ? "app-blur" : ""}`}
             onClick={() => setExplicitIsBlurred(!explicitIsBlurred)}
           >
             <RichTextContent
               html={dataTextsToQuillHtml(question.explicitData || [])}
-              className="ba-question-figures"
+              className="app-question-figures"
               onImageClick={({ url, alt }) => openImageModal(url, alt)}
             />
           </div>
@@ -340,15 +340,15 @@ function Question({
         )}
 
         {!isQuizMode && (
-        <div className="bux-grid__cell bux-grid__cell--12 bux-grid__cell--6@md bux-mar-top-sp-16">
-          <h3 className="bux-card__heading">Implicit Data</h3>
+        <div className="sb-grid__cell sb-grid__cell--12 sb-grid__cell--6@md sb-mar-top-sp-16">
+          <h3 className="sb-card__heading">Implicit Data</h3>
           <div
-            className={`bux-paragraph ba-interactive ${implicitIsBlurred ? "ba-blur" : ""}`}
+            className={`sb-paragraph app-interactive ${implicitIsBlurred ? "app-blur" : ""}`}
             onClick={() => setImplicitIsBlurred(!implicitIsBlurred)}
           >
             <RichTextContent
               html={dataTextsToQuillHtml(question.implicitData || [])}
-              className="ba-question-figures"
+              className="app-question-figures"
               onImageClick={({ url, alt }) => openImageModal(url, alt)}
             />
           </div>
@@ -356,10 +356,10 @@ function Question({
         )}
 
         {!isQuizMode && (
-        <div className="bux-grid__cell bux-grid__cell--12 bux-mar-top-sp-16">
+        <div className="sb-grid__cell sb-grid__cell--12 sb-mar-top-sp-16">
           <button
-            id="ba-btn-sol"
-            className="bux-button--alt"
+            id="app-btn-sol"
+            className="sb-button--alt"
             onClick={toggleSolution}
           >
             {showSolution ? "Hide Solution" : "Show Solution"}
@@ -367,23 +367,23 @@ function Question({
 
           {showSolution && (
             <>
-              <div id="ba-solution" className="bux-mar-top-sp-16" ref={solutionRef}>
-                <h3 className="bux-card__heading">Solution in plain words (English)</h3>
-                <div className="bux-paragraph">
+              <div id="app-solution" className="sb-mar-top-sp-16" ref={solutionRef}>
+                <h3 className="sb-card__heading">Solution in plain words (English)</h3>
+                <div className="sb-paragraph">
                   <RichTextContent
                     html={formatSolutionContent(question.solution)}
-                    className="ba-question-figures"
+                    className="app-question-figures"
                     onImageClick={({ url, alt }) => openImageModal(url, alt)}
                   />
                 </div>
               </div>
 
-              <div className="bux-mar-top-sp-16">
-                <h3 className="bux-card__heading">Mathematical Solution</h3>
-                <div className="bux-paragraph">
+              <div className="sb-mar-top-sp-16">
+                <h3 className="sb-card__heading">Mathematical Solution</h3>
+                <div className="sb-paragraph">
                   <RichTextContent
                     html={formatSolutionContent(question.mathematicalSolution)}
-                    className="ba-question-figures"
+                    className="app-question-figures"
                     onImageClick={({ url, alt }) => openImageModal(url, alt)}
                   />
                 </div>
@@ -401,12 +401,12 @@ function Question({
         altText={selectedImage?.alt || ''}
       />
 
-      <div className="bux-grid__cell--12 bux-mar-top-sp-16">
-                <div className="bux-paragraph">
-                  <div className="ba-concept-tags-container">
+      <div className="sb-grid__cell--12 sb-mar-top-sp-16">
+                <div className="sb-paragraph">
+                  <div className="app-concept-tags-container">
                     {question.concepts && question.concepts.length > 0 ? (
                       question.concepts.map(concept => (
-                        <span key={concept.id} className="ba-concept-tag">
+                        <span key={concept.id} className="app-concept-tag">
                           {concept.name}
                         </span>
                       ))

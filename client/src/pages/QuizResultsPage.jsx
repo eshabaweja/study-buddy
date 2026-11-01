@@ -29,10 +29,10 @@ export default function QuizResultsPage() {
     };
   }, [quizId]);
 
-  if (loading) return <div className="bux-container">Loading results...</div>;
+  if (loading) return <div className="sb-container">Loading results...</div>;
   if (error) {
     return (
-      <div className="bux-container">
+      <div className="sb-container">
         <p>Error: {error}</p>
         <Link to={`/quizzes/${courseId}`}>Back to quizzes</Link>
       </div>
@@ -48,28 +48,28 @@ export default function QuizResultsPage() {
       : 'neutral';
 
   return (
-    <div className="bux-container bux-mar-top-sp-16 bux-mar-bottom-sp-32">
+    <div className="sb-container sb-mar-top-sp-16 sb-mar-bottom-sp-32">
       <p>
         <Link to={`/quizzes/${courseId}`}>← Quizzes</Link>
       </p>
-      <h2 className="bux-mar-top-sp-16">Results: {quiz?.title}</h2>
-      <p className="bux-mar-top-sp-8">Submitted — review your answers below.</p>
+      <h2 className="sb-mar-top-sp-16">Results: {quiz?.title}</h2>
+      <p className="sb-mar-top-sp-8">Submitted — review your answers below.</p>
       {!showScores && (
-        <p className="bux-mar-top-sp-8 ba-quiz-results__pending">
+        <p className="sb-mar-top-sp-8 app-quiz-results__pending">
           Your instructor has not published scores yet. You can review your responses,
           but correct answers, points, and feedback will appear once scores are released.
         </p>
       )}
       {showScores && score && (
-        <p className={`bux-mar-top-sp-8 ${scoreTierClassName(totalTier)}`}>
+        <p className={`sb-mar-top-sp-8 ${scoreTierClassName(totalTier)}`}>
           <strong>
             Score: {score.points_earned} / {score.points_possible} points
           </strong>
           {pendingTyped > 0 ? (
-            <span className="bux-mar-left-sp-8">(typed answers pending AI grading)</span>
+            <span className="sb-mar-left-sp-8">(typed answers pending AI grading)</span>
           ) : (
             scoreTierLabel(totalTier) && (
-              <span className="bux-mar-left-sp-8">({scoreTierLabel(totalTier)})</span>
+              <span className="sb-mar-left-sp-8">({scoreTierLabel(totalTier)})</span>
             )
           )}
         </p>

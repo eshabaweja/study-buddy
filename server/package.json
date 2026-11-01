@@ -1,7 +1,7 @@
 {
-  "name": "buckademy-server",
+  "name": "study-buddy-server",
   "version": "1.0.0",
-  "description": "Backend server for Buckademy",
+  "description": "Backend server for Study Buddy",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -17,7 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aws-sdk/client-s3": "^3.817.0",
     "argon2": "^0.43.0",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",

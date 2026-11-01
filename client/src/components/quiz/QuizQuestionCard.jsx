@@ -63,27 +63,27 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
 
   return (
     <div
-      className={`ba-quiz-question-card${isDragging ? ' ba-quiz-question-card--dragging' : ''}`}
+      className={`app-quiz-question-card${isDragging ? ' app-quiz-question-card--dragging' : ''}`}
     >
-      <div className="ba-quiz-question-card__header">
-        <div className="ba-quiz-question-card__header-left">
+      <div className="app-quiz-question-card__header">
+        <div className="app-quiz-question-card__header-left">
           <button
             type="button"
-            className="ba-quiz-question-card__drag-handle"
+            className="app-quiz-question-card__drag-handle"
             aria-label={`Drag question ${index + 1}`}
             {...dragHandleProps}
           >
             ⋮⋮
           </button>
-          <span className="ba-quiz-question-card__number">{index + 1}.</span>
-          <span className="ba-quiz-question-card__type-badge">
+          <span className="app-quiz-question-card__number">{index + 1}.</span>
+          <span className="app-quiz-question-card__type-badge">
             {ITEM_TYPE_LABELS[item.item_type] || item.item_type}
           </span>
         </div>
-        <div className="ba-quiz-question-card__actions">
+        <div className="app-quiz-question-card__actions">
           <button
             type="button"
-            className="ba-quiz-question-card__action-btn"
+            className="app-quiz-question-card__action-btn"
             onClick={onDuplicate}
             aria-label="Duplicate question"
             title="Duplicate"
@@ -92,7 +92,7 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
           </button>
           <button
             type="button"
-            className="ba-quiz-question-card__action-btn ba-quiz-question-card__action-btn--danger"
+            className="app-quiz-question-card__action-btn app-quiz-question-card__action-btn--danger"
             onClick={onDelete}
             aria-label="Delete question"
             title="Delete"
@@ -102,10 +102,10 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
         </div>
       </div>
 
-      <div className="ba-quiz-question-card__body">
-        <label className="bux-label">Question type</label>
+      <div className="app-quiz-question-card__body">
+        <label className="sb-label">Question type</label>
         <select
-          className="bux-select bux-mar-bottom-sp-16"
+          className="sb-select sb-mar-bottom-sp-16"
           value={item.item_type}
           onChange={(e) => handleTypeChange(e.target.value)}
         >
@@ -116,8 +116,8 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
 
         {item.item_type !== 'practice_question' && (
           <>
-            <label className="bux-label">Prompt</label>
-            <div className="ba-quiz-question-card__prompt">
+            <label className="sb-label">Prompt</label>
+            <div className="app-quiz-question-card__prompt">
               <QuillEditor
                 key={`${item.localKey}-prompt`}
                 ref={promptRef}
@@ -129,13 +129,13 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
         )}
 
         {item.item_type === 'multiple_choice' && (
-          <div className="ba-quiz-question-card__mcq">
+          <div className="app-quiz-question-card__mcq">
             {(item.options || []).map((opt, i) => (
-              <div key={`${item.localKey}-opt-${i}`} className="ba-quiz-question-card__option bux-mar-top-sp-8">
-                <label className="bux-label">Option {i + 1}</label>
-                <div className="bux-flex bux-flex--align-center ba-quiz-question-card__option-row">
+              <div key={`${item.localKey}-opt-${i}`} className="app-quiz-question-card__option sb-mar-top-sp-8">
+                <label className="sb-label">Option {i + 1}</label>
+                <div className="sb-flex sb-flex--align-center app-quiz-question-card__option-row">
                   <input
-                    className="bux-text-field"
+                    className="sb-text-field"
                     value={opt}
                     onChange={(e) => {
                       const next = [...(item.options || [])];
@@ -143,19 +143,19 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
                       updateItem({ options: next });
                     }}
                   />
-                  <label className="bux-mar-left-sp-8 bux-flex bux-flex--align-center">
+                  <label className="sb-mar-left-sp-8 sb-flex sb-flex--align-center">
                     <input
                       type="radio"
                       name={`correct-${item.localKey}`}
                       checked={Number(item.correct_option_index) === i}
                       onChange={() => updateItem({ correct_option_index: i })}
-                      className="bux-mar-right-sp-4"
+                      className="sb-mar-right-sp-4"
                     />
                     Correct
                   </label>
                   <button
                     type="button"
-                    className="ba-quiz-question-card__option-delete bux-mar-left-sp-8"
+                    className="app-quiz-question-card__option-delete sb-mar-left-sp-8"
                     onClick={() => updateItem(mcqRemoveOptionAt(
                       item.options,
                       i,
@@ -171,7 +171,7 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
             ))}
             <button
               type="button"
-              className="bux-button--alt-small bux-mar-top-sp-8"
+              className="sb-button--alt-small sb-mar-top-sp-8"
               onClick={() => updateItem({ options: [...(item.options || []), ''] })}
             >
               + Add option
@@ -181,7 +181,7 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
 
         {item.item_type === 'typed' && (
           <>
-            <label className="bux-label bux-mar-top-sp-16">Correct Answer (optional)</label>
+            <label className="sb-label sb-mar-top-sp-16">Correct Answer (optional)</label>
             <QuillEditor
               key={`${item.localKey}-reference`}
               ref={referenceRef}
@@ -196,7 +196,7 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
         {item.item_type === 'practice_question' && (
           <>
             <select
-              className="bux-select bux-mar-top-sp-8"
+              className="sb-select sb-mar-top-sp-8"
               value={item.question_id}
               onChange={(e) => updateItem({ question_id: e.target.value })}
             >
@@ -214,23 +214,23 @@ const QuizQuestionCard = forwardRef(function QuizQuestionCard(
               })}
             </select>
             {item.question_id ? (
-              <div className="ba-quiz-question-card__preview bux-mar-top-sp-16">
+              <div className="app-quiz-question-card__preview sb-mar-top-sp-16">
                 {selectedBankQuestion ? (
                   <QuizFigureContent html={selectedBankQuestion.question_text} />
                 ) : (
-                  <p className="ba-quiz-form__hint">Question not found in this course bank.</p>
+                  <p className="app-quiz-form__hint">Question not found in this course bank.</p>
                 )}
               </div>
             ) : null}
           </>
         )}
 
-        <div className="ba-quiz-editor__numeric-field ba-quiz-editor__numeric-field--inline bux-mar-top-sp-16">
-          <label className="bux-label ba-quiz-editor__numeric-label">Points</label>
+        <div className="app-quiz-editor__numeric-field app-quiz-editor__numeric-field--inline sb-mar-top-sp-16">
+          <label className="sb-label app-quiz-editor__numeric-label">Points</label>
           <input
             type="number"
             min={0}
-            className="bux-text-field ba-input-narrow bux-mar-bottom-sp-8"
+            className="sb-text-field app-input-narrow sb-mar-bottom-sp-8"
             value={item.points ?? 1}
             onChange={(e) => updateItem({ points: e.target.value })}
           />

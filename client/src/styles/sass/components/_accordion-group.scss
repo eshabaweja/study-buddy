@@ -1,0 +1,156 @@
+
+.sb-accordion {
+	border-bottom: 2px solid $gray-light-80;
+}
+
+.sb-accordion__heading {
+	margin-bottom: 0;
+}
+
+.sb-accordion__trigger {
+	@include button-reset;
+	color: $gray-dark-80;
+	background-color: $white;
+	border-top: 2px solid $gray-light-80;
+	padding: $sp-16;
+	width: 100%;
+	text-align: left;
+	position: relative;
+	&:focus,
+	&:hover {
+		color: $gray-dark-80;
+		background: $gray-light-90;
+		border: none;
+		border-top: 2px solid $gray-light-80;
+	}
+	&:focus {
+        outline: 2px solid $focus;
+		outline-offset: -2px;
+	}
+}
+
+.sb-accordion__trigger[aria-expanded="true"] {
+	background: $white;
+	&:hover {
+		background: $gray-light-90;
+	}
+}
+
+.sb-accordion__title {
+	font-size: $ts-base;
+	display: block;
+	pointer-events: none;
+	font-weight: 700;
+	padding-left: rem-calc(26);
+}
+
+.sb-accordion__icon:before {
+	position: absolute;
+	color: $brand;
+	font-size: $ts-base;
+	left: $sp-16;
+	top: 36%;
+	content: "\203A";
+	font-family: $icon;
+}
+
+.sb-accordion__trigger[aria-expanded="true"] .sb-accordion__icon:before {
+	content: "\25B4";
+}
+
+.sb-accordion__panel {
+	margin: 0;
+	padding: rem-calc(8 16 24 44);
+	font-family: $sans;
+	font-size: $ts-base;
+	background-color: $white;
+
+    p {
+        font-family: $sans;
+    }
+}
+
+/* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4806035/ */
+.sb-accordion__panel[hidden] {
+	display: none;
+}
+
+/* Fix for accordion list font family */
+
+.sb-accordion ul.sb-list-ul {
+	font-family: $sans;
+}
+
+.sb-details {
+	width: 100%;
+	text-align: left;
+}
+
+.sb-details__summary {
+	list-style: none;
+	border-top: none;
+	border-bottom: 2px solid $gray-light-80;
+	padding: $sp-16;
+	font-size: $ts-base;
+	font-weight: 700;
+	line-height: normal;
+
+	
+	&:focus,
+	&:hover {
+		background: $gray-light-90;
+	}
+	&:focus {
+		outline-offset: -2px;
+		outline: 2px solid $focus;
+	}
+
+	&:before {
+		position: relative;
+		top: 2px;
+		margin-right: rem-calc(10);
+		color: $brand;
+		font-size: $ts-base;
+		content: "\203A";
+		font-family: $icon;
+	}
+}
+
+.sb-details__wrapper .sb-detail:first-child .sb-details__summary {
+	border-top: 2px solid $gray-light-80;
+}
+
+.sb-details__inner {
+	padding: rem-calc(8 16 24 44);
+
+	ul.sb-list-ul {
+		font-family: $sans;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+// When open.
+.sb-details[open] {
+	border-bottom: 2px solid $gray-light-80;
+
+	.sb-details__summary {
+		background: $white;
+		border-bottom: none;
+
+		&:hover {
+			background: $gray-light-90;
+		}
+
+		&:before {
+			content: "\25B4";
+		}
+	}
+}
+
+// Fix for double arrow in Safari
+*::-webkit-details-marker {
+	display: none;
+}

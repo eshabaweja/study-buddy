@@ -56,16 +56,16 @@ function SignUp() {
     };
 
     return (
-        <div className="bux-container">
-        <div className="bux-form ba-login-form">
-            <h2 className="bux-ts-md bux-mar-bottom-sp-8">Create an Account</h2>
-            <p className="bux-small bux-mar-bottom-sp-16">Please fill in your details to sign up</p>
+        <div className="sb-container">
+        <div className="sb-form app-login-form">
+            <h2 className="sb-ts-md sb-mar-bottom-sp-8">Create an Account</h2>
+            <p className="sb-small sb-mar-bottom-sp-16">Please fill in your details to sign up</p>
             
-            {error && <div className="bux-alert bux-alert--error bux-mar-bottom-sp-16">{error}</div>}
+            {error && <div className="sb-alert sb-alert--error sb-mar-bottom-sp-16">{error}</div>}
             
             <form onSubmit={handleSubmit}>
-                <div className="bux-mar-bottom-sp-8">
-                    <label htmlFor="full_name" className="bux-small ba-bold">Full Name</label>
+                <div className="sb-mar-bottom-sp-8">
+                    <label htmlFor="full_name" className="sb-small app-bold">Full Name</label>
                     <input
                         type="text"
                         id="full_name"
@@ -74,13 +74,13 @@ function SignUp() {
                         onChange={handleChange}
                         placeholder="Enter your full name"
                         required
-                        className="bux-text-field__input"
+                        className="sb-text-field__input"
                         style={{ width: '100%' }}
                     />
                 </div>
 
-                <div className="bux-mar-bottom-sp-8">
-                    <label htmlFor="email" className="bux-small ba-bold">Email</label>
+                <div className="sb-mar-bottom-sp-8">
+                    <label htmlFor="email" className="sb-small app-bold">Email</label>
                     <input
                         type="email"
                         id="email"
@@ -89,7 +89,7 @@ function SignUp() {
                         onChange={handleChange}
                         placeholder="Enter your email"
                         required
-                        className="bux-text-field__input"
+                        className="sb-text-field__input"
                         style={{ width: '100%' }}
                     />
                 </div>
@@ -114,16 +114,16 @@ function SignUp() {
                     placeholder="Confirm your password"
                     required
                     autoComplete="new-password"
-                    containerClassName="bux-mar-bottom-sp-16"
+                    containerClassName="sb-mar-bottom-sp-16"
                 />
 
-                <button type="submit" className="bux-button bux-button--primary">
+                <button type="submit" className="sb-button sb-button--primary">
                     Sign Up
                 </button>
             </form>
 
-            <p className="bux-small bux-mar-top-sp-16">
-                Already have an account? <Link to="/" className="bux-link">Login</Link>
+            <p className="sb-small sb-mar-top-sp-16">
+                Already have an account? <Link to="/" className="sb-link">Login</Link>
             </p>
         </div>
         </div>

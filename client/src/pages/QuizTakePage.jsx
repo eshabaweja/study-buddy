@@ -278,10 +278,10 @@ export default function QuizTakePage() {
 
   const totalPoints = items.reduce((sum, item) => sum + (item.points ?? 1), 0);
 
-  if (loading) return <div className="bux-container">Loading quiz...</div>;
+  if (loading) return <div className="sb-container">Loading quiz...</div>;
   if (error) {
     return (
-      <div className="bux-container">
+      <div className="sb-container">
         <p>Error: {error}</p>
         <Link to={`/quizzes/${courseId}`}>Back to quizzes</Link>
       </div>
@@ -289,22 +289,22 @@ export default function QuizTakePage() {
   }
 
   return (
-    <div className="bux-container bux-mar-top-sp-16 bux-mar-bottom-sp-32">
+    <div className="sb-container sb-mar-top-sp-16 sb-mar-bottom-sp-32">
       <p>
         <Link to={`/quizzes/${courseId}`}>← Quizzes</Link>
       </p>
-      <h2 className="bux-mar-top-sp-16">{quiz?.title}</h2>
+      <h2 className="sb-mar-top-sp-16">{quiz?.title}</h2>
       {quiz?.description && (
-        <div className="bux-mar-top-sp-8">
+        <div className="sb-mar-top-sp-8">
           <QuizFigureContent html={quiz.description} />
         </div>
       )}
       {totalPoints > 0 && (
-        <p className="bux-mar-top-sp-8">Total points: {totalPoints}</p>
+        <p className="sb-mar-top-sp-8">Total points: {totalPoints}</p>
       )}
       {quiz?.time_limit_minutes && !isSubmitted && (
         <p
-          className={`bux-mar-top-sp-8 ba-quiz-timer${msRemaining != null && msRemaining <= 60000 ? ' ba-quiz-timer--warning' : ''}`}
+          className={`sb-mar-top-sp-8 app-quiz-timer${msRemaining != null && msRemaining <= 60000 ? ' app-quiz-timer--warning' : ''}`}
         >
           Time remaining: {formatCountdown(msRemaining ?? 0)}
           {isExpired && ' (submitting…)'}
@@ -319,7 +319,7 @@ export default function QuizTakePage() {
         if (item.item_type === 'multiple_choice') {
           return (
             <div key={item.id}>
-              <p className="bux-mar-top-sp-16 bux-mar-bottom-sp-8">
+              <p className="sb-mar-top-sp-16 sb-mar-bottom-sp-8">
                 <strong>Question {index + 1}</strong> (multiple choice){pointsLabel}
               </p>
               <QuizMcqItem
@@ -336,7 +336,7 @@ export default function QuizTakePage() {
         if (item.item_type === 'typed' || item.item_type === 'practice_question') {
           return (
             <div key={item.id}>
-              <p className="bux-mar-top-sp-16 bux-mar-bottom-sp-8">
+              <p className="sb-mar-top-sp-16 sb-mar-bottom-sp-8">
                 <strong>Question {index + 1}</strong> (typed answer){pointsLabel}
               </p>
               <QuizTypedItem
@@ -356,7 +356,7 @@ export default function QuizTakePage() {
       {!isSubmitted && (
         <button
           type="button"
-          className="bux-button bux-mar-top-sp-24"
+          className="sb-button sb-mar-top-sp-24"
           onClick={() => handleSubmit(false)}
           disabled={submitting || isExpired}
         >

@@ -96,17 +96,17 @@ const CourseCard = ({ course, onDashboard = false }) => {
 
   return (
     <div 
-      className={`ba-card ${!course.published ? 'ba-card--unpublished' : ''}`}
+      className={`app-card ${!course.published ? 'app-card--unpublished' : ''}`}
       onClick={handleCardClick}
     >
       {(instructorLabel || !course.published) && (
-        <div className="ba-card__badges">
+        <div className="app-card__badges">
           {!course.published && (
-            <span className="ba-card__badge ba-card__badge--unpublished">Unpublished</span>
+            <span className="app-card__badge app-card__badge--unpublished">Unpublished</span>
           )}
           {instructorLabel && (
             <span
-              className="ba-card__badge ba-card__badge--instructor"
+              className="app-card__badge app-card__badge--instructor"
               title={course.instructor_email || instructorLabel}
             >
               {instructorLabel}
@@ -115,16 +115,16 @@ const CourseCard = ({ course, onDashboard = false }) => {
         </div>
       )}
       <div
-        className={`ba-card__content${instructorLabel || !course.published ? ' ba-card__content--badged' : ''}`}
+        className={`app-card__content${instructorLabel || !course.published ? ' app-card__content--badged' : ''}`}
       >
-        <div className="ba-card__heading">
+        <div className="app-card__heading">
           <span>
             {!course.code.startsWith('MATH') && `${course.code} - `}{course.title}
           </span>
         </div>
         {isAuthenticated && !isInstructor && course.published && (<>
           <button
-            className={`${isTracked ? 'bux-button--small' : 'bux-button--alt-small'} bux-mar-top-sp-8`}
+            className={`${isTracked ? 'sb-button--small' : 'sb-button--alt-small'} sb-mar-top-sp-8`}
             onClick={handleTrackToggle}
             disabled={isLoading}
           >
@@ -134,7 +134,7 @@ const CourseCard = ({ course, onDashboard = false }) => {
             <>
               <button
                 type="button"
-                className="bux-button--small bux-mar-left-sp-8"
+                className="sb-button--small sb-mar-left-sp-8"
                 onClick={(e) => {
                   e.stopPropagation();
                   navigate(`/quizzes/${course.id}`);
@@ -143,7 +143,7 @@ const CourseCard = ({ course, onDashboard = false }) => {
                 Quizzes
               </button>
               <small
-                className="bux-mar-left-sp-8 bux-button--alt-small"
+                className="sb-mar-left-sp-8 sb-button--alt-small"
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >

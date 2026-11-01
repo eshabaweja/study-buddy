@@ -1,0 +1,39 @@
+
+.sb-search {
+	position: relative;
+	height: 36px;
+}
+
+.sb-search__input {
+	padding: rem-calc(6 8 5);
+	border-bottom: 2px solid $gray-dark-60;
+	color: $gray-dark-60;
+	line-height: 1;
+	height: 36px;
+	width: 100%;
+
+	&::placeholder {
+		color: $gray-dark-40;
+		font-size: rem-calc(15);
+	}
+}
+
+.sb-search__submit {
+	@include button-reset;
+	height: 30px;
+	width: 36px;
+	font-size: 18px;
+	position: absolute;
+	right: 2px;
+	padding-top: 6px;
+	margin-top: 2px;
+
+	&:after {
+		content: "\2315";
+		font-family: $icon;
+	}
+
+	&:focus {
+		outline: 2px solid $focus;
+	}
+}

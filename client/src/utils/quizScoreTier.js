@@ -7,8 +7,8 @@ export function getScoreTier(pointsEarned, pointsPossible) {
 }
 
 export function scoreTierClassName(tier) {
-  if (!tier || tier === 'neutral') return 'ba-quiz-score';
-  return `ba-quiz-score ba-quiz-score--${tier}`;
+  if (!tier || tier === 'neutral') return 'app-quiz-score';
+  return `app-quiz-score app-quiz-score--${tier}`;
 }
 
 export function scoreTierLabel(tier) {
@@ -19,6 +19,6 @@ export function scoreTierLabel(tier) {
 }
 
 export function scoreTierBoxClassName(tier) {
-  if (!tier || tier === 'neutral') return 'ba-quiz-submissions-score';
-  return `ba-quiz-submissions-score ba-quiz-submissions-score--${tier}`;
+  if (!tier || tier === 'neutral') return 'app-quiz-submissions-score';
+  return `app-quiz-submissions-score app-quiz-submissions-score--${tier}`;
 }

@@ -22,7 +22,7 @@ const Chatbot = ({ question }) => {
     if (question && !conversationStarted) {
       const welcomeMessage = {
         id: Date.now(),
-        text: `Hi! I'm Brutus, your AI tutor. What is the goal of this problem?`,
+        text: `Hi! I'm Study Buddy, your AI tutor. What is the goal of this problem?`,
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString()
       };
@@ -109,7 +109,7 @@ const Chatbot = ({ question }) => {
       setChatHistory(prev => [...prev, { role: 'assistant', content: fullResponse }]);
       return fullResponse;
     } catch (error) {
-      console.error('Error calling LiteLLM API:', error);
+      console.error('Error calling LLM API:', error);
       return "I'm sorry, I'm having trouble connecting right now. Please try again in a moment.";
     }
   };
@@ -183,30 +183,30 @@ const Chatbot = ({ question }) => {
   }
 
   return (
-    <div className="ba-card bux-grid__cell bux-grid__cell--12 bux-mar-top-sp-16">
-      <div className="bux-grid">
-        <div className="bux-grid__cell bux-grid__cell--12 bux-flex bux-flex--justify-between bux-flex--align-center">
-          <h3 className="bux-card__heading ba-problem-example__goal-heading">
-            🤖 Brutus AI Tutor
+    <div className="app-card sb-grid__cell sb-grid__cell--12 sb-mar-top-sp-16">
+      <div className="sb-grid">
+        <div className="sb-grid__cell sb-grid__cell--12 sb-flex sb-flex--justify-between sb-flex--align-center">
+          <h3 className="sb-card__heading app-problem-example__goal-heading">
+            🤖 Study Buddy AI Tutor
             <ProblemSolvingExample />
           </h3>
           <button 
             onClick={resetConversation}
-            className="bux-button--alt bux-button--small"
+            className="sb-button--alt sb-button--small"
             title="Start a new conversation"
           >
             Reset
           </button>
         </div>
 
-        <div className="bux-grid__cell bux-grid__cell--12">
+        <div className="sb-grid__cell sb-grid__cell--12">
           <p className="chatbot-disclaimer" role="note">
-            Brutus is a built-in assistance feature and is not always correct.
+            Study Buddy is a built-in assistance feature and is not always correct.
             Use it as scaffolding for your own thinking.
           </p>
         </div>
 
-        <div className="bux-grid__cell bux-grid__cell--12">
+        <div className="sb-grid__cell sb-grid__cell--12">
           <div className="chatbot-messages-container">
             {messages.map((message) => (
               <div
@@ -231,7 +231,7 @@ const Chatbot = ({ question }) => {
                     <div></div>
                   </div>
                   <span style={{ fontSize: '0.875rem', color: '#666', marginLeft: '8px' }}>
-                    Brutus is thinking...
+                    Study Buddy is thinking...
                   </span>
                 </div>
               </div>
@@ -241,7 +241,7 @@ const Chatbot = ({ question }) => {
           </div>
         </div>
 
-        <div className="bux-grid__cell bux-grid__cell--12">
+        <div className="sb-grid__cell sb-grid__cell--12">
           <form onSubmit={handleSendMessage} className="chatbot-input-container">
             <input
               type="text"
@@ -253,7 +253,7 @@ const Chatbot = ({ question }) => {
             />
             <button 
               type="submit" 
-              className="bux-button"
+              className="sb-button"
               disabled={isLoading || inputMessage.trim() === ''}
             >
               {isLoading ? 'Sending...' : 'Send'}

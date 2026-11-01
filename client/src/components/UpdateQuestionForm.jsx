@@ -319,13 +319,13 @@ const UpdateQuestionForm = ({
   if (loading && !isInline) return <div>Loading...</div>;
 
   return (
-    <div className={isInline ? '' : 'bux-mar-top-sp-32'}>
+    <div className={isInline ? '' : 'sb-mar-top-sp-32'}>
       {!isInline && <h3>Update a Question</h3>}
 
-      <form className="bux-form" onSubmit={handleSubmit}>
+      <form className="sb-form" onSubmit={handleSubmit}>
         {!isInline && (
           <>
-            <div className="bux-mar-bottom-sp-16">
+            <div className="sb-mar-bottom-sp-16">
               <label htmlFor="courseCode">Select Course *</label>
               <select
                 id="courseCode"
@@ -347,7 +347,7 @@ const UpdateQuestionForm = ({
               </select>
             </div>
 
-            <div className="bux-mar-bottom-sp-16">
+            <div className="sb-mar-bottom-sp-16">
               <label htmlFor="questionId">Select Question *</label>
               <select
                 id="questionId"
@@ -368,17 +368,17 @@ const UpdateQuestionForm = ({
           </>
         )}
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <div
-            className="bux-flex bux-flex--justify-between bux-flex--align-center"
+            className="sb-flex sb-flex--justify-between sb-flex--align-center"
             style={{ marginBottom: "8px", gap: "12px", flexWrap: "wrap" }}
           >
             <label htmlFor="figureDescription" style={{ marginBottom: 0 }}>
-              Figure description (for Brutus)
+              Figure description (for Study Buddy)
             </label>
             <button
               type="button"
-              className="bux-button--alt bux-button--small"
+              className="sb-button--alt sb-button--small"
               onClick={handleRegenerateFigureDescription}
               disabled={!selectedQuestionId || regeneratingFigure}
               title="Re-run AI vision on the current prompt figures"
@@ -391,13 +391,13 @@ const UpdateQuestionForm = ({
             rows={12}
             value={figureDescription}
             onChange={(e) => setFigureDescription(e.target.value)}
-            placeholder="Auto-generated from prompt figures. Edit so Brutus accurately sees what students see."
+            placeholder="Auto-generated from prompt figures. Edit so Study Buddy accurately sees what students see."
             style={{ display: "block", width: "100%", resize: "vertical" }}
             disabled={!selectedQuestionId}
           />
           {figureDescription.trim() ? (
-            <div className="bux-mar-top-sp-16 ba-figure-description">
-              <p className="bux-paragraph" style={{ fontSize: "0.875rem", color: "#666", marginBottom: "8px" }}>
+            <div className="sb-mar-top-sp-16 app-figure-description">
+              <p className="sb-paragraph" style={{ fontSize: "0.875rem", color: "#666", marginBottom: "8px" }}>
                 Preview
               </p>
               <RichTextContent
@@ -406,13 +406,13 @@ const UpdateQuestionForm = ({
               />
             </div>
           ) : null}
-          <p className="bux-paragraph" style={{ fontSize: "0.875rem", color: "#666", marginTop: "8px" }}>
+          <p className="sb-paragraph" style={{ fontSize: "0.875rem", color: "#666", marginTop: "8px" }}>
             Used by the AI tutor instead of re-sending images each chat. Leave blank if there are no figures.
             Regenerate uses the figures currently in Question Text below (save first if you just changed them).
           </p>
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="questionText">Question Text *</label>
           <QuillEditor
             key={`questionText-${selectedQuestionId}`}
@@ -422,7 +422,7 @@ const UpdateQuestionForm = ({
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="goal">Goal</label>
           <QuillEditor
             key={`goal-${selectedQuestionId}`}
@@ -432,7 +432,7 @@ const UpdateQuestionForm = ({
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="explicitData">Explicit Data</label>
           <QuillEditor
             key={`explicit-${selectedQuestionId}`}
@@ -442,7 +442,7 @@ const UpdateQuestionForm = ({
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="implicitData">Implicit Data</label>
           <QuillEditor
             key={`implicit-${selectedQuestionId}`}
@@ -452,7 +452,7 @@ const UpdateQuestionForm = ({
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="solution">Solution in plain words (English)</label>
           <QuillEditor
             key={`solution-${selectedQuestionId}`}
@@ -462,7 +462,7 @@ const UpdateQuestionForm = ({
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="mathematicalSolution">Mathematical Solution</label>
           <QuillEditor
             key={`mathSolution-${selectedQuestionId}`}
@@ -472,7 +472,7 @@ const UpdateQuestionForm = ({
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label>Concepts</label>
           {courseConcepts.length === 0 ? (
             <p style={{ color: "#666", fontStyle: "italic" }}>
@@ -496,14 +496,14 @@ const UpdateQuestionForm = ({
           )}
         </div>
 
-        <div className="ba-quiz-form__actions bux-mar-top-sp-16">
-          <button type="submit" className="bux-button bux-button--primary">
+        <div className="app-quiz-form__actions sb-mar-top-sp-16">
+          <button type="submit" className="sb-button sb-button--primary">
             {isInline ? 'Save changes' : 'Update Question'}
           </button>
           {isInline && onInlineCancel && (
             <button
               type="button"
-              className="bux-button bux-button--secondary"
+              className="sb-button sb-button--secondary"
               onClick={onInlineCancel}
             >
               Cancel

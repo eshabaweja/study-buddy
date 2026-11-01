@@ -9,16 +9,16 @@ function PasswordInput({
     placeholder,
     required,
     autoComplete,
-    containerClassName = 'bux-mar-bottom-sp-8',
+    containerClassName = 'sb-mar-bottom-sp-8',
 }) {
     const [visible, setVisible] = useState(false);
 
     return (
         <div className={containerClassName}>
-            <label htmlFor={id} className="bux-small ba-bold">
+            <label htmlFor={id} className="sb-small app-bold">
                 {label}
             </label>
-            <div className="bux-text-field ba-password-field">
+            <div className="sb-text-field app-password-field">
                 <input
                     type={visible ? 'text' : 'password'}
                     id={id}
@@ -28,12 +28,12 @@ function PasswordInput({
                     placeholder={placeholder}
                     required={required}
                     autoComplete={autoComplete}
-                    className="bux-text-field__input bux-text-field__input--password"
+                    className="sb-text-field__input sb-text-field__input--password"
                     style={{ width: '100%', paddingRight: 48 }}
                 />
                 <button
                     type="button"
-                    className={`bux-text-field__password-icon bux-text-field__password-icon--${visible ? 'hide' : 'view'} bux-tooltip__button`}
+                    className={`sb-text-field__password-icon sb-text-field__password-icon--${visible ? 'hide' : 'view'} sb-tooltip__button`}
                     title={visible ? 'Hide password' : 'Show password'}
                     aria-label={visible ? 'Hide password' : 'Show password'}
                     aria-pressed={visible}

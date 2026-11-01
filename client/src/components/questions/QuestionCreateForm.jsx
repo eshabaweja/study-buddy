@@ -177,7 +177,7 @@ const QuestionCreateForm = () => {
 
   if (loadingCourses) {
     return (
-      <div className="bux-mar-top-sp-32">
+      <div className="sb-mar-top-sp-32">
         <h3>Add a New Question</h3>
         <p>Loading courses...</p>
       </div>
@@ -185,10 +185,10 @@ const QuestionCreateForm = () => {
   }
 
   return (
-    <div className="bux-mar-top-sp-32">
+    <div className="sb-mar-top-sp-32">
       <h3>Add a New Question</h3>
-      <form className="bux-form" onSubmit={handleSubmit}>
-        <div className="bux-mar-bottom-sp-16">
+      <form className="sb-form" onSubmit={handleSubmit}>
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="courseCode">Course *</label>
           <select
             id="courseCode"
@@ -207,7 +207,7 @@ const QuestionCreateForm = () => {
           </select>
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="questionText">Question Text *</label>
           <QuillEditor
             key={`questionText-${editorResetKey}`}
@@ -216,7 +216,7 @@ const QuestionCreateForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="goal">Goal</label>
           <QuillEditor
             key={`goal-${editorResetKey}`}
@@ -225,7 +225,7 @@ const QuestionCreateForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="explicitData">Explicit Data</label>
           <QuillEditor
             key={`explicit-${editorResetKey}`}
@@ -234,7 +234,7 @@ const QuestionCreateForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="implicitData">Implicit Data</label>
           <QuillEditor
             key={`implicit-${editorResetKey}`}
@@ -243,7 +243,7 @@ const QuestionCreateForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="solution">Solution in plain words (English)</label>
           <QuillEditor
             key={`solution-${editorResetKey}`}
@@ -252,7 +252,7 @@ const QuestionCreateForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="mathematicalSolution">Mathematical Solution</label>
           <QuillEditor
             key={`mathSolution-${editorResetKey}`}
@@ -261,7 +261,7 @@ const QuestionCreateForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label>Associate Concepts (Optional)</label>
           {courseConcepts.length === 0 ? (
             <p style={{ color: "#666", fontStyle: "italic" }}>
@@ -292,7 +292,7 @@ const QuestionCreateForm = () => {
           )}
         </div>
 
-        <button type="submit" className="bux-button">
+        <button type="submit" className="sb-button">
           Create Question
         </button>
       </form>

@@ -1,0 +1,83 @@
+
+@mixin alert($bg-color, $icon-color, $text-color: $black, $icon-code: "\f106") {
+  position: relative;
+  background-color: $bg-color;
+  color: $text-color;
+  display: flex;
+  padding: $sp-8 $sp-16;
+
+  .sb-alert__icon {
+    line-height: 1;
+    margin-right: $sp-12;
+
+    &:after {
+      content: $icon-code;
+      font-family: $icon;
+      font-size: $ts-md;
+      color: $icon-color;
+    }
+  }
+
+  .sb-alert__message-title {
+    color: $text-color;
+    font-size: $ts-18;
+    font-family: $sans;
+    font-weight: 700;
+    margin-bottom: $sp-4;
+    line-height: 1.5rem;
+  }
+
+  .sb-alert__message-text {
+    font-family: $sans;
+    font-size: $ts-base;
+    line-height: 1.375;
+    font-weight: 400;
+  }
+
+  .sb-alert__dismiss {
+    @include button-reset();
+    position: absolute;
+    height: 44px;
+    width: 44px;
+    top: 0;
+    right: 0;
+
+    &:after {
+      content: "\00D7";
+      font-family: $icon;
+      font-size: $ts-base;
+      color: $text-color;
+    }
+
+    &:focus {
+      outline: 2px solid $focus;
+    }
+  }
+}
+
+.sb-alert {
+  &.sb-alert--info {
+    @include alert($info-light, $info-dark, $icon-code: "\f104");
+    a {
+      @include link-base("light");
+    }
+  }
+  &.sb-alert--success {
+    @include alert($success-light, $success-dark, $icon-code: "\f102");
+    a {
+      @include link-base("light");
+    }
+  }
+  &.sb-alert--warning {
+    @include alert($warning-light, $warning-dark, $icon-code: "\f108");
+    a {
+      @include link-base("light");
+    }
+  }
+  &.sb-alert--error {
+    @include alert($error, $white, $white, $icon-code: "\f106");
+    a {
+      @include link-base("brand");
+    }
+  }
+}

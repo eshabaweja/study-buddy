@@ -53,10 +53,10 @@ const CourseDeleteForm = () => {
   };
 
   return (
-    <div className="bux-mar-top-sp-32">
+    <div className="sb-mar-top-sp-32">
       <h3>Delete Course</h3>
-      <div className="bux-form">
-        <div className="bux-mar-bottom-sp-16">
+      <div className="sb-form">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="deleteCourseCode">Select Course *</label>
           <select
             id="deleteCourseCode"
@@ -76,7 +76,7 @@ const CourseDeleteForm = () => {
         </div>
         <button
           type="button"
-          className="bux-button--alt"
+          className="sb-button--alt"
           disabled={!selectedCourseCode || loading}
           onClick={handleDelete}
         >

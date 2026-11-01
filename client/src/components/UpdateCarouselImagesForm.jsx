@@ -133,10 +133,10 @@ const UpdateCarouselImagesForm = () => {
   if (loading) return <div>Loading courses...</div>;
 
   return (
-    <div className="bux-mar-top-sp-32">
+    <div className="sb-mar-top-sp-32">
       <h3>Update/Delete Course Carousel Images</h3>
-      <form className="bux-form" onSubmit={handleSubmit}>
-        <div className="bux-mar-bottom-sp-16">
+      <form className="sb-form" onSubmit={handleSubmit}>
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="courseCode">Select Course *</label>
           <select
             id="courseCode"
@@ -156,13 +156,13 @@ const UpdateCarouselImagesForm = () => {
 
         {/* Existing Images */}
         {existingImages.length > 0 && (
-          <div className="bux-mar-bottom-sp-16">
+          <div className="sb-mar-bottom-sp-16">
             <label>Current Carousel Images</label>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "10px" }}>
               {existingImages.map((image, index) => (
                 <div key={image.id} style={{ position: "relative" }}>
                   <div 
-                    className="ba-interactive ba-thumbnail"
+                    className="app-interactive app-thumbnail"
                     onClick={() => setSelectedImage({
                       url: image.image_url,
                       alt: `Course image ${index + 1}`
@@ -177,7 +177,7 @@ const UpdateCarouselImagesForm = () => {
                   <button
                     type="button"
                     onClick={() => markImageForDeletion(image.id)}
-                    className="ba-remove-image-button"
+                    className="app-remove-image-button"
                     aria-label={`Remove image ${index + 1}`}
                   >
                     ×
@@ -189,7 +189,7 @@ const UpdateCarouselImagesForm = () => {
         )}
 
         {/* New Images Upload */}
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="newImages">Add New Images</label>
           <input
             type="file"
@@ -197,7 +197,7 @@ const UpdateCarouselImagesForm = () => {
             onChange={handleFileChange}
             accept="image/*"
             multiple
-            className="bux-form__input"
+            className="sb-form__input"
           />
           {newImages.length > 0 && (
             <div style={{ marginTop: "10px" }}>
@@ -206,7 +206,7 @@ const UpdateCarouselImagesForm = () => {
                 {newImages.map((image, index) => (
                   <div key={index} style={{ position: "relative" }}>
                     <div 
-                      className="ba-image-thumbnail"
+                      className="app-image-thumbnail"
                       onClick={() => setSelectedImage({
                         url: image.preview,
                         alt: `New image ${index + 1}`
@@ -221,7 +221,7 @@ const UpdateCarouselImagesForm = () => {
                     <button
                       type="button"
                       onClick={() => removeNewImage(index)}
-                      className="ba-remove-image-button"
+                      className="app-remove-image-button"
                       aria-label={`Remove new image ${index + 1}`}
                     >
                       ×
@@ -235,7 +235,7 @@ const UpdateCarouselImagesForm = () => {
 
         <button 
           type="submit" 
-          className="bux-button"
+          className="sb-button"
           disabled={!selectedCourseCode || (newImages.length === 0 && imagesToDelete.length === 0)}
         >
           Update Images

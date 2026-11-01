@@ -118,10 +118,10 @@ const AddCourseForm = () => {
   }, [success]);
 
   return (
-    <div className="bux-mar-top-sp-32">
+    <div className="sb-mar-top-sp-32">
       <h3>Add a New Course</h3>
-      <form className="bux-form" onSubmit={handleSubmit}>
-        <div className="bux-mar-bottom-sp-16">
+      <form className="sb-form" onSubmit={handleSubmit}>
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="code">Course Code *</label>
           <input
             type="text"
@@ -134,7 +134,7 @@ const AddCourseForm = () => {
             style={{ display: "block", width: "100%" }}
           />
         </div>
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="title">Course Title *</label>
           <input
             type="text"
@@ -149,7 +149,7 @@ const AddCourseForm = () => {
         </div>
 
         {/* Course Images Upload */}
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="courseImages">Course Images (Optional)</label>
           <input
             type="file"
@@ -159,7 +159,7 @@ const AddCourseForm = () => {
             onFocus={clearMessages}
             accept="image/*"
             multiple
-            className="bux-form__input"
+            className="sb-form__input"
           />
           {/* Display uploaded images with remove buttons */}
           {formData.courseImages.length > 0 && (
@@ -192,7 +192,7 @@ const AddCourseForm = () => {
           )}
         </div>
 
-        <button type="submit" className="bux-button">
+        <button type="submit" className="sb-button">
           Add Course
         </button>
       </form>

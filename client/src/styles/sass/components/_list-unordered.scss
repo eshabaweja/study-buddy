@@ -1,0 +1,55 @@
+
+// First level.
+ul.sb-list-ul {
+	list-style: none;
+	margin-left: 0;
+	margin-top: 0;
+	padding-left: calc(#{$sp-64} - #{$sp-16});
+	font-family: $serif;
+	font-size: $ts-base;
+	line-height: 1.5;
+	li {
+		list-style-type: none;
+		margin-bottom: $sp-8;
+        padding-left: 24px;
+		&::before {
+			color: $brand;
+			content: "\2022";
+			font-family: $icon;
+			font-size: rem-calc(7);
+			display: inline-block;
+			width: $sp-32;
+			vertical-align: middle;
+            margin-left: calc($sp-32 * -1);
+		}
+	}
+
+    ol {
+        @extend .sb-list-ol;
+        li:before {
+            display: none;
+        }
+         li ul {
+             @extend .sb-list-ul;
+         }
+    }
+}
+// Second level.
+ul.sb-list-ul ul {
+	padding-left: $sp-24;
+	margin-top: $sp-8;
+	li {
+		&::before {
+			content: "\203A";
+		}
+	}
+}
+// Third level.
+ul.sb-list-ul ul ul {
+	padding-left: $sp-24;
+	li {
+		&::before {
+			content: "\2039";
+		}
+	}
+}

@@ -35,11 +35,11 @@ function SortableConceptCard({ concept }) {
     <div
       ref={setNodeRef}
       style={style}
-      className={`ba-concept-sortable${isDragging ? ' ba-concept-sortable--dragging' : ''}`}
+      className={`app-concept-sortable${isDragging ? ' app-concept-sortable--dragging' : ''}`}
     >
       <button
         type="button"
-        className="ba-concept-sortable__drag-handle"
+        className="app-concept-sortable__drag-handle"
         aria-label={`Drag to reorder ${concept.name}`}
         {...attributes}
         {...listeners}
@@ -70,7 +70,7 @@ export default function ConceptSortableGrid({ concepts, onReorder, disabled = fa
   return (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
       <SortableContext items={concepts.map((c) => c.id)} strategy={rectSortingStrategy}>
-        <div className="ba-grid-layout ba-concept-sortable-grid">
+        <div className="app-grid-layout app-concept-sortable-grid">
           {concepts.map((concept) => (
             <SortableConceptCard key={concept.id} concept={concept} />
           ))}

@@ -1,0 +1,49 @@
+
+@mixin social-links($link-color: $gray-dark-80, $hover-bg-color: $gray-light-60) {
+	.sb-social-links__item {
+		display: inline-block;
+		margin-right: $sp-8;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	.sb-social-links__link {
+		@include link-reset();
+
+		color: $link-color;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		width: 44px;
+		height: 44px;
+
+		&:hover {
+			background-color: $hover-bg-color;
+			color: $link-color;
+		}
+
+		&:focus {
+			outline: 2px solid $focus;
+			background-color: $hover-bg-color;
+			color: $link-color;
+		}
+
+		span {
+			font-size: $ts-20;
+			line-height: 0;
+		}
+	}
+}
+
+.sb-social-links,
+.sb-social-links--light,
+.sb-social-links--white {
+	@include social-links();
+}
+
+.sb-social-links--dark {
+	@include social-links($white, $gray-dark-40);
+}

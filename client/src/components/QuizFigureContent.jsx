@@ -14,7 +14,7 @@ export default function QuizFigureContent({ html, className = '' }) {
     <>
       <RichTextContent
         html={html}
-        className={`ba-question-figures ${className}`.trim()}
+        className={`app-question-figures ${className}`.trim()}
         onImageClick={({ url, alt }) => setModal({ open: true, url, alt })}
       />
       <ImageModal

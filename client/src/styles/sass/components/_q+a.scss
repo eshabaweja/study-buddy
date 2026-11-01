@@ -1,0 +1,68 @@
+
+.sb-qa__item {
+	margin-bottom: $sp-32;
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.sb-qa__question {
+	display: flex;
+	;
+}
+
+.sb-qa__answer {
+	display: flex;
+}
+
+.sb-qa__question-marker,
+.sb-qa__answer-marker {
+	background: $gray-light-80;
+	height: $sp-32;
+	min-width: $sp-32;
+	margin-right: $sp-16;
+	font-family: $sans;
+	font-size: $ts-20;
+	font-weight: 700;
+	line-height: 1.675;
+	text-align: center;
+}
+
+.sb-qa__question-marker {
+	line-height: 1.625;
+}
+
+.sb-qa__question-text {
+	@include heading($ts-20, 26, 700);
+	margin: $sp-4 0 0;
+}
+
+.sb-qa__answer-text {
+	@extend .sb-paragraph;
+	margin-bottom: 0;
+}
+
+.sb-qa--storytelling {
+
+	.sb-qa__question {
+		margin-top: $sp-32;
+		margin-bottom: $sp-16;
+	}
+	
+	.sb-qa__question-text {
+		font-family: $sans;
+		font-size: $ts-base;
+		font-weight: 700;
+		margin-bottom: 0;
+	}
+	
+	.sb-qa__answer {
+		margin-bottom: 0;
+	}
+
+	.sb-qa__answer-text {
+		font-family: $serif;
+		font-size: $ts-base;
+	}
+	
+} 

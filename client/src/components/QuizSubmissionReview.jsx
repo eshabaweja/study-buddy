@@ -40,16 +40,16 @@ function QuestionScoreHeader({
   const tier = showGrading && showScore ? getScoreTier(pointsEarned, pointsPossible) : 'neutral';
 
   return (
-    <div className={`ba-quiz-review-question__header ${scoreTierClassName(tier)}`}>
-      <p className="ba-quiz-review-question__title">
+    <div className={`app-quiz-review-question__header ${scoreTierClassName(tier)}`}>
+      <p className="app-quiz-review-question__title">
         <strong>Question {index + 1}</strong>
         {itemType === 'typed' && ' (typed answer)'}
         {itemType === 'practice_question' && ' (practice bank)'}
         {extraLabel ? ` — ${extraLabel}` : ''}
       </p>
       {showGrading && showScore && pointsEarned != null && (
-        <p className="ba-quiz-review-question__score">
-          <span className="ba-quiz-score-badge">{scoreTierLabel(tier)}</span>
+        <p className="app-quiz-review-question__score">
+          <span className="app-quiz-score-badge">{scoreTierLabel(tier)}</span>
           {' '}
           {pointsEarned} / {pointsPossible} pt{pointsPossible === 1 ? '' : 's'}
         </p>
@@ -64,7 +64,7 @@ export default function QuizSubmissionReview({
   showGrading = false,
 }) {
   return (
-    <div className="ba-quiz-submission-review">
+    <div className="app-quiz-submission-review">
       {items.map((item, index) => {
         const studentAnswer = item.student_answer;
         const ans = parseAnswerJson(studentAnswer?.answer_json);
@@ -82,7 +82,7 @@ export default function QuizSubmissionReview({
                 : null;
 
           return (
-            <div key={item.id} className="ba-quiz-review-question bux-mar-top-sp-16">
+            <div key={item.id} className="app-quiz-review-question sb-mar-top-sp-16">
               <QuestionScoreHeader
                 index={index}
                 itemType="multiple_choice"
@@ -107,7 +107,7 @@ export default function QuizSubmissionReview({
         if (item.item_type === 'typed' || item.item_type === 'practice_question') {
           const isGraded = Boolean(studentAnswer?.graded_at);
           return (
-            <div key={item.id} className="ba-quiz-review-question bux-mar-top-sp-16">
+            <div key={item.id} className="app-quiz-review-question sb-mar-top-sp-16">
               <QuestionScoreHeader
                 index={index}
                 itemType={item.item_type}
@@ -127,13 +127,13 @@ export default function QuizSubmissionReview({
                 answerKey={item.id}
               />
               {showGrading && isGraded && studentAnswer?.ai_feedback && (
-                <div className="ba-quiz-feedback bux-mar-top-sp-8">
+                <div className="app-quiz-feedback sb-mar-top-sp-8">
                   <strong>Feedback:</strong>
                   <p>{studentAnswer.ai_feedback}</p>
                 </div>
               )}
               {showGrading && !isGraded && (
-                <p className="ba-quiz-review-question__pending bux-mar-top-sp-8">
+                <p className="app-quiz-review-question__pending sb-mar-top-sp-8">
                   Pending AI grading
                 </p>
               )}

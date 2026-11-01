@@ -121,7 +121,7 @@ const ConceptQuestionPage = () => {
   if (!fullQuestion) return <div>No question found.</div>;
 
   return (
-    <div className="bux-container">
+    <div className="sb-container">
       <QuestionGrid
         questions={questionIds}
         currentIndex={currentQuestionIndex}
@@ -162,7 +162,7 @@ const ConceptQuestionPage = () => {
           onPublishedChange={handlePublishedChange}
         />
       )}
-      <Link to={`/concepts/${courseCode}`} className="bux-link">
+      <Link to={`/concepts/${courseCode}`} className="sb-link">
         Back to Concepts
       </Link>
     </div>

@@ -58,47 +58,47 @@ function StudentAnalytics() {
 
   if (loading) {
     return (
-      <div className="ba-analytics">
-        <h3 className="ba-analytics__title">Student Analytics</h3>
-        <p className="ba-analytics__hint">Loading...</p>
+      <div className="app-analytics">
+        <h3 className="app-analytics__title">Student Analytics</h3>
+        <p className="app-analytics__hint">Loading...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="ba-analytics">
-        <h3 className="ba-analytics__title">Student Analytics</h3>
-        <p className="ba-analytics__hint">Error: {error}</p>
+      <div className="app-analytics">
+        <h3 className="app-analytics__title">Student Analytics</h3>
+        <p className="app-analytics__hint">Error: {error}</p>
       </div>
     );
   }
 
   return (
-    <div className="ba-analytics">
-      <h3 className="ba-analytics__title">Student Analytics</h3>
+    <div className="app-analytics">
+      <h3 className="app-analytics__title">Student Analytics</h3>
 
-      <form onSubmit={handleSearch} className="ba-quiz-form__section ba-analytics__search">
-        <div className="ba-quiz-form__field">
-          <label className="bux-label" htmlFor="student-analytics-search">
+      <form onSubmit={handleSearch} className="app-quiz-form__section app-analytics__search">
+        <div className="app-quiz-form__field">
+          <label className="sb-label" htmlFor="student-analytics-search">
             Search students
           </label>
           <input
             id="student-analytics-search"
             type="search"
-            className="bux-text-field"
+            className="sb-text-field"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Name or email"
           />
         </div>
-        <div className="ba-quiz-form__actions">
-          <button type="submit" className="bux-button">
+        <div className="app-quiz-form__actions">
+          <button type="submit" className="sb-button">
             Search
           </button>
           <button
             type="button"
-            className="bux-button bux-button--secondary"
+            className="sb-button sb-button--secondary"
             onClick={() => {
               setSearchQuery('');
               setHasSearched(true);
@@ -109,7 +109,7 @@ function StudentAnalytics() {
           {hasSearched && (
             <button
               type="button"
-              className="bux-button bux-button--secondary"
+              className="sb-button sb-button--secondary"
               onClick={handleClear}
             >
               Clear
@@ -119,18 +119,18 @@ function StudentAnalytics() {
       </form>
 
       {!hasSearched && (
-        <p className="ba-analytics__hint">
+        <p className="app-analytics__hint">
           Search by student name or email to view analytics.
         </p>
       )}
 
       {hasSearched && (
-        <div className="ba-analytics__results">
+        <div className="app-analytics__results">
           {filteredStudents.length === 0 ? (
-            <p className="ba-analytics__empty">No students match your search.</p>
+            <p className="app-analytics__empty">No students match your search.</p>
           ) : (
-            <div className="bux-table-container">
-              <table className="bux-table">
+            <div className="sb-table-container">
+              <table className="sb-table">
                 <thead>
                   <tr>
                     <th>#</th>

@@ -70,27 +70,27 @@ export default function PdfToTextPage() {
   };
 
   return (
-    <div className="bux-container ba-container ba-dashboard bux-mar-top-sp-16">
+    <div className="sb-container app-container app-dashboard sb-mar-top-sp-16">
       <p>
         <Link to="/dashboard">← Dashboard</Link>
       </p>
-      <h2 className="ba-dashboard__title">PDF to text</h2>
-      <p className="ba-quiz-form__hint">
+      <h2 className="app-dashboard__title">PDF to text</h2>
+      <p className="app-quiz-form__hint">
         Upload a PDF or image (up to 20MB). This tool will transcribe it into copyable text.
         Accepted formats: PDF, JPEG, and PNG.
       </p>
 
-      <div className="ba-quiz-form__section ba-pdf-upload bux-mar-top-sp-16">
-        <form onSubmit={handleConvert} className="bux-form">
-          <div className="ba-quiz-form__field">
-            <label className="bux-label" htmlFor="pdf-file">
+      <div className="app-quiz-form__section app-pdf-upload sb-mar-top-sp-16">
+        <form onSubmit={handleConvert} className="sb-form">
+          <div className="app-quiz-form__field">
+            <label className="sb-label" htmlFor="pdf-file">
               File (PDF, JPEG, or PNG, up to 20MB)
             </label>
             <input
               id="pdf-file"
               type="file"
               accept="application/pdf,.pdf,image/jpeg,.jpg,.jpeg,image/png,.png"
-              className="bux-text-field"
+              className="sb-text-field"
               onChange={(e) => {
                 setFile(e.target.files?.[0] || null);
                 setText('');
@@ -100,10 +100,10 @@ export default function PdfToTextPage() {
             />
           </div>
           {error ? (
-            <div className="bux-alert bux-alert--error bux-mar-bottom-sp-16">{error}</div>
+            <div className="sb-alert sb-alert--error sb-mar-bottom-sp-16">{error}</div>
           ) : null}
-          <div className="ba-quiz-form__actions">
-            <button type="submit" className="bux-button" disabled={loading || !file}>
+          <div className="app-quiz-form__actions">
+            <button type="submit" className="sb-button" disabled={loading || !file}>
               {loading ? 'Converting…' : 'Convert to text'}
             </button>
           </div>
@@ -111,45 +111,45 @@ export default function PdfToTextPage() {
       </div>
 
       {previewUrl ? (
-        <div className="ba-pdf-compare bux-mar-top-sp-16">
-          <div className="ba-quiz-form__section">
-            <h3 className="ba-quiz-form__section-title">Original</h3>
-            <div className="ba-pdf-compare__preview">
+        <div className="app-pdf-compare sb-mar-top-sp-16">
+          <div className="app-quiz-form__section">
+            <h3 className="app-quiz-form__section-title">Original</h3>
+            <div className="app-pdf-compare__preview">
               {isPdf ? (
                 <iframe
                   title="Original PDF"
                   src={previewUrl}
-                  className="ba-pdf-compare__frame"
+                  className="app-pdf-compare__frame"
                 />
               ) : (
                 <img
                   src={previewUrl}
                   alt="Original upload"
-                  className="ba-pdf-compare__image"
+                  className="app-pdf-compare__image"
                 />
               )}
             </div>
           </div>
-          <div className="ba-quiz-form__section">
-            <h3 className="ba-quiz-form__section-title">Copyable text</h3>
+          <div className="app-quiz-form__section">
+            <h3 className="app-quiz-form__section-title">Copyable text</h3>
             {text ? (
               <>
-                <div className="ba-quiz-form__field">
+                <div className="app-quiz-form__field">
                   <textarea
                     id="pdf-text"
-                    className="bux-text-field ba-pdf-compare__text"
+                    className="sb-text-field app-pdf-compare__text"
                     value={text}
                     onChange={(e) => setText(e.target.value)}
                   />
                 </div>
-                <div className="ba-quiz-form__actions">
-                  <button type="button" className="bux-button" onClick={handleCopy}>
+                <div className="app-quiz-form__actions">
+                  <button type="button" className="sb-button" onClick={handleCopy}>
                     {copied ? 'Copied' : 'Copy'}
                   </button>
                 </div>
               </>
             ) : (
-              <p className="ba-quiz-form__hint">
+              <p className="app-quiz-form__hint">
                 {loading ? 'Converting…' : 'Convert the file to see text here.'}
               </p>
             )}

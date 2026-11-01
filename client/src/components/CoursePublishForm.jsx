@@ -73,11 +73,11 @@ const CoursePublishForm = () => {
     }, [success]);  
 
   return (
-    <div className="bux-mar-top-sp-32">
+    <div className="sb-mar-top-sp-32">
       <h3>Publish/Unpublish Course</h3>
       
-      <div className="bux-form">
-        <div className="bux-mar-bottom-sp-16">
+      <div className="sb-form">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="courseCode">Select Course *</label>
           <select
             id="courseCode"
@@ -96,7 +96,7 @@ const CoursePublishForm = () => {
 
         <button 
           type="button" 
-          className="bux-button"
+          className="sb-button"
           disabled={!selectedCourseCode || loading}
           onClick={handlePublishToggle}
         >

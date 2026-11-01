@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import { getLiteLlmHeaders, getLiteLlmUrl, getTutorModel } from '../config/llm.js';
+import { getLlmHeaders, getLlmUrl, getTutorModel } from '../config/llm.js';
 import { ensureFigureDescription } from '../services/figureDescription.js';
 
 const router = express.Router();
@@ -17,7 +17,7 @@ if (!process.env.LLM_BASE_URL) {
 const chatbotConfig = {
   role: "developer",
   content: `
-You are Brutus, a concise Socratic tutor.
+You are Study Buddy, a concise Socratic tutor.
 Use ONLY the provided context for teaching (goal, explicit/implicit data, solution, figureDescription).
 If figureDescription is present, treat it as what the student can see in the prompt figure(s).
 
@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
       });
     }
 
-    // Use LiteLLM HTTP API directly for optimized performance
+    // Use LLM HTTP API directly for optimized performance
     const shouldStream = stream !== false; // Default to streaming for better UX
     
     const requestBody = {
@@ -91,8 +91,8 @@ router.post('/', async (req, res) => {
       stream: shouldStream
     };
 
-    // Make request to LiteLLM proxy
-    const litellmUrl = getLiteLlmUrl();
+    // Make request to LLM API
+    const llmUrl = getLlmUrl();
     
     if (shouldStream) {
       // Handle streaming response for better performance
@@ -100,15 +100,15 @@ router.post('/', async (req, res) => {
       res.setHeader('Cache-Control', 'no-cache');
       res.setHeader('Connection', 'keep-alive');
       
-      const response = await fetch(litellmUrl, {
+      const response = await fetch(llmUrl, {
         method: 'POST',
-        headers: getLiteLlmHeaders(),
+        headers: getLlmHeaders(),
         body: JSON.stringify(requestBody)
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`LiteLLM API Error: ${response.status} - ${errorText}`);
+        throw new Error(`LLM API Error: ${response.status} - ${errorText}`);
       }
 
       const reader = response.body.getReader();
@@ -167,22 +167,22 @@ router.post('/', async (req, res) => {
       res.end();
     } else {
       // Non-streaming response (fallback)
-      const response = await fetch(litellmUrl, {
+      const response = await fetch(llmUrl, {
         method: 'POST',
-        headers: getLiteLlmHeaders(),
+        headers: getLlmHeaders(),
         body: JSON.stringify(requestBody)
       });
 
       if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(`LiteLLM API Error: ${response.status} - ${errorText}`);
+        throw new Error(`LLM API Error: ${response.status} - ${errorText}`);
       }
 
       const completion = await response.json();
       const reply = completion.choices[0].message.content;
       
       if (!reply) {
-        throw new Error('No response received from LiteLLM');
+        throw new Error('No response received from LLM');
       }
 
       res.json({ 
@@ -193,7 +193,7 @@ router.post('/', async (req, res) => {
     }
     
   } catch (error) {
-    console.error('LiteLLM API Error:', error);
+    console.error('LLM API Error:', error);
     if (res.writableEnded) return;
     if (res.headersSent) {
       res.write(`data: ${JSON.stringify({ error: 'Internal server error', message: error.message })}\n\n`);

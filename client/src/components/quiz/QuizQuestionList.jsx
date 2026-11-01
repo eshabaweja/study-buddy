@@ -86,7 +86,7 @@ export default function QuizQuestionList({
   return (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
       <SortableContext items={items.map((i) => i.localKey)} strategy={verticalListSortingStrategy}>
-        <div className="ba-quiz-question-list">
+        <div className="app-quiz-question-list">
           {items.map((item, index) => (
             <SortableQuestionCard
               key={item.localKey}

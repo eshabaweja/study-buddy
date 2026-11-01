@@ -1,6 +1,6 @@
 import {
-  getLiteLlmHeaders,
-  getLiteLlmUrl,
+  getLlmHeaders,
+  getLlmUrl,
   getVisionModel,
 } from '../config/llm.js';
 
@@ -90,9 +90,9 @@ export async function transcribeFileBuffer(buffer, filename, mimeType) {
 
   let response;
   try {
-    response = await fetch(getLiteLlmUrl(), {
+    response = await fetch(getLlmUrl(), {
       method: 'POST',
-      headers: getLiteLlmHeaders(),
+      headers: getLlmHeaders(),
       body: JSON.stringify({
         model: getVisionModel(),
         messages: [
@@ -122,7 +122,7 @@ export async function transcribeFileBuffer(buffer, filename, mimeType) {
 
   if (!response.ok) {
     const errorText = await response.text();
-    console.error('LiteLLM vision error:', response.status, errorText.slice(0, 2000));
+    console.error('LLM vision error:', response.status, errorText.slice(0, 2000));
     throw new Error(userFacingTranscribeError(response.status, errorText));
   }
 

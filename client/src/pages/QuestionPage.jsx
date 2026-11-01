@@ -177,17 +177,17 @@ const QuestionPage = () => {
   }, [activeQuestionId, reloadQuestionList]);
 
   if (loading && !fullQuestion) {
-    return <div className="bux-container">Loading question...</div>;
+    return <div className="sb-container">Loading question...</div>;
   }
-  if (error) return <div className="bux-container">Error: {error}</div>;
+  if (error) return <div className="sb-container">Error: {error}</div>;
   if (!fullQuestion) {
-    return <div className="bux-container">No question found.</div>;
+    return <div className="sb-container">No question found.</div>;
   }
 
   return (
-    <div className="bux-container">
+    <div className="sb-container">
       <Announcement>
-        <p className="ba-announcement__text">
+        <p className="app-announcement__text">
           Feedback on this question? Share your thoughts{" "}
           <a
             href="https://forms.office.com/r/BHqcCJb37C"
@@ -250,7 +250,7 @@ const QuestionPage = () => {
           onPublishedChange={handlePublishedChange}
         />
       )}
-      <Link to="/concepts" className="bux-link">
+      <Link to="/concepts" className="sb-link">
         Back to Courses
       </Link>
     </div>

@@ -100,11 +100,11 @@ function CourseDetailAnalytics() {
 
   if (loading) {
     return (
-      <div className="bux-mar-top-sp-16">
+      <div className="sb-mar-top-sp-16">
         <button
           type="button"
           onClick={() => navigate('/dashboard')}
-          className="bux-button bux-mar-bottom-sp-16"
+          className="sb-button sb-mar-bottom-sp-16"
         >
           ← Back to Dashboard
         </button>
@@ -115,11 +115,11 @@ function CourseDetailAnalytics() {
 
   if (error || !courseData) {
     return (
-      <div className="bux-mar-top-sp-16">
+      <div className="sb-mar-top-sp-16">
         <button
           type="button"
           onClick={() => navigate('/dashboard')}
-          className="bux-button bux-mar-bottom-sp-16"
+          className="sb-button sb-mar-bottom-sp-16"
         >
           ← Back to Dashboard
         </button>
@@ -132,7 +132,7 @@ function CourseDetailAnalytics() {
     <th onClick={() => handleSort(sortKey)} style={{ cursor: 'pointer' }}>
       {children}
       {sortConfig.key === sortKey && (
-        <span className="bux-mar-left-sp-4">
+        <span className="sb-mar-left-sp-4">
           {sortConfig.direction === 'asc' ? '↑' : '↓'}
         </span>
       )}
@@ -140,12 +140,12 @@ function CourseDetailAnalytics() {
   );
 
   return (
-    <div className="bux-container">
-      <div className="bux-mar-top-sp-16">
+    <div className="sb-container">
+      <div className="sb-mar-top-sp-16">
         <button
           type="button"
           onClick={() => navigate('/dashboard')}
-          className="bux-button bux-mar-bottom-sp-16"
+          className="sb-button sb-mar-bottom-sp-16"
         >
           ← Back to Dashboard
         </button>
@@ -154,8 +154,8 @@ function CourseDetailAnalytics() {
           {courseData.course.code} - {courseData.course.title}
         </h2>
 
-        <div className="bux-grid bux-grid--no-gutters bux-mar-top-sp-16">
-          <div className="bux-grid__cell--3">
+        <div className="sb-grid sb-grid--no-gutters sb-mar-top-sp-16">
+          <div className="sb-grid__cell--3">
             <div>
               <div style={{ fontWeight: 'bold' }}>Total Enrolled</div>
               <div style={{ fontSize: '2rem', color: '#B12635' }}>
@@ -163,7 +163,7 @@ function CourseDetailAnalytics() {
               </div>
             </div>
           </div>
-          <div className="bux-grid__cell--3">
+          <div className="sb-grid__cell--3">
             <div>
               <div style={{ fontWeight: 'bold' }}>Total Questions</div>
               <div style={{ fontSize: '2rem', color: '#B12635' }}>
@@ -173,10 +173,10 @@ function CourseDetailAnalytics() {
           </div>
         </div>
 
-        <div className="bux-mar-top-sp-16">
+        <div className="sb-mar-top-sp-16">
           <h3>Student Progress</h3>
-          <div className="bux-mar-top-sp-16" style={{ overflowX: 'auto' }}>
-            <table className="bux-table">
+          <div className="sb-mar-top-sp-16" style={{ overflowX: 'auto' }}>
+            <table className="sb-table">
               <thead>
                 <tr>
                   <SortableHeader sortKey="name">Student Name</SortableHeader>
@@ -201,7 +201,7 @@ function CourseDetailAnalytics() {
                     <td>
                       <div style={{ fontWeight: 'bold' }}>{student.progress_percentage}%</div>
                       <div
-                        className="bux-mar-top-sp-4"
+                        className="sb-mar-top-sp-4"
                         style={{
                           width: '100%',
                           height: '8px',
@@ -223,7 +223,7 @@ function CourseDetailAnalytics() {
                       <td>
                         <button
                           type="button"
-                          className="bux-button bux-button--secondary bux-button--small"
+                          className="sb-button sb-button--secondary sb-button--small"
                           disabled={unenrolling === student.email}
                           onClick={(e) => handleUnenroll(e, student.email)}
                         >

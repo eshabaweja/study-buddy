@@ -28,16 +28,16 @@ export default function QuizManagePanel() {
   }, [courseId]);
 
   return (
-    <div className="ba-card bux-mar-top-sp-16 bux-mar-bottom-sp-16">
-      <div className="ba-card__content">
-        <h3 className="ba-card__heading">Quizzes</h3>
-        <p className="bux-mar-top-sp-8">
+    <div className="app-card sb-mar-top-sp-16 sb-mar-bottom-sp-16">
+      <div className="app-card__content">
+        <h3 className="app-card__heading">Quizzes</h3>
+        <p className="sb-mar-top-sp-8">
           Create a new quiz or open an existing one to edit, view, or delete it.
         </p>
 
-        <label className="bux-label bux-mar-top-sp-16">Course</label>
+        <label className="sb-label sb-mar-top-sp-16">Course</label>
         <select
-          className="bux-select bux-mar-bottom-sp-16"
+          className="sb-select sb-mar-bottom-sp-16"
           value={courseId}
           onChange={(e) => setCourseId(e.target.value)}
         >
@@ -53,9 +53,9 @@ export default function QuizManagePanel() {
           const selectedCourse = courses.find((c) => String(c.id) === courseId);
           if (!selectedCourse) return null;
           return (
-          <p className="bux-mar-bottom-sp-16">
+          <p className="sb-mar-bottom-sp-16">
             <Link
-              className="bux-button"
+              className="sb-button"
               to={`/instructor/quizzes/new?courseId=${selectedCourse.id}`}
             >
               Create new quiz
@@ -65,16 +65,16 @@ export default function QuizManagePanel() {
         })()}
 
         {courseId && quizzes.length > 0 && (
-          <ul className="bux-list-ul ba-quiz-manage-list">
+          <ul className="sb-list-ul app-quiz-manage-list">
             {quizzes.map((q) => (
-              <li key={q.id} className="ba-quiz-manage-list__item">
+              <li key={q.id} className="app-quiz-manage-list__item">
                 <Link
-                  className="bux-link ba-quiz-manage-list__title"
+                  className="sb-link app-quiz-manage-list__title"
                   to={`/instructor/quizzes/${q.id}/edit`}
                 >
                   {q.title}
                 </Link>
-                <span className="ba-quiz-manage-list__meta">
+                <span className="app-quiz-manage-list__meta">
                   ({q.status || '—'}) — {formatQuizWindow(q.opens_at, q.closes_at)}
                 </span>
               </li>

@@ -105,12 +105,12 @@ function ConceptLearn() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="bux-container">
-      <h2 className="bux-mar-top-sp-16">Concepts for {courseCode}</h2>
-      <p className="bux-mar-top-sp-16">
+    <div className="sb-container">
+      <h2 className="sb-mar-top-sp-16">Concepts for {courseCode}</h2>
+      <p className="sb-mar-top-sp-16">
         After learning, you can practice them here:{" "}
         {practiceHref ? (
-          <Link to={practiceHref} className="bux-button--small">
+          <Link to={practiceHref} className="sb-button--small">
             Concept Crunch
           </Link>
         ) : (
@@ -119,18 +119,18 @@ function ConceptLearn() {
       </p>
 
       {canReorder && courseQuizzes.length > 0 && (
-        <div className="bux-mar-top-sp-16">
-          <h3 className="bux-card__heading">Course quizzes</h3>
-          <ul className="bux-list-ul ba-quiz-manage-list bux-mar-top-sp-8">
+        <div className="sb-mar-top-sp-16">
+          <h3 className="sb-card__heading">Course quizzes</h3>
+          <ul className="sb-list-ul app-quiz-manage-list sb-mar-top-sp-8">
             {courseQuizzes.map((quiz) => (
-              <li key={quiz.id} className="ba-quiz-manage-list__item">
+              <li key={quiz.id} className="app-quiz-manage-list__item">
                 <Link
-                  className="bux-link ba-quiz-manage-list__title"
+                  className="sb-link app-quiz-manage-list__title"
                   to={`/instructor/quizzes/${quiz.id}/edit`}
                 >
                   {quiz.title}
                 </Link>
-                <span className="ba-quiz-manage-list__meta">
+                <span className="app-quiz-manage-list__meta">
                   ({quiz.status || "—"})
                 </span>
               </li>
@@ -140,18 +140,18 @@ function ConceptLearn() {
       )}
 
       {canReorder && concepts.length > 0 && (
-        <p className="bux-mar-top-sp-8 ba-concept-sortable-hint">
+        <p className="sb-mar-top-sp-8 app-concept-sortable-hint">
           Drag concepts by the handle to reorder them for students.
         </p>
       )}
 
       {courseImages.length > 0 && (
-        <div className="bux-mar-top-sp-32">
+        <div className="sb-mar-top-sp-32">
           <ImageCarousel images={courseImages} />
         </div>
       )}
 
-      <div className="bux-mar-top-sp-32">
+      <div className="sb-mar-top-sp-32">
         {concepts.length ? (
           canReorder ? (
             <ConceptSortableGrid
@@ -160,7 +160,7 @@ function ConceptLearn() {
               disabled={reordering}
             />
           ) : (
-            <div className="ba-grid-layout">
+            <div className="app-grid-layout">
               {concepts.map((concept) => (
                 <ConceptFlashcard key={concept.id} concept={concept} />
               ))}

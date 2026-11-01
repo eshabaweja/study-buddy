@@ -138,10 +138,10 @@ export default function QuizSubmissionsPage() {
     }
   };
 
-  if (loading) return <div className="bux-container">Loading submissions...</div>;
+  if (loading) return <div className="sb-container">Loading submissions...</div>;
   if (error) {
     return (
-      <div className="bux-container">
+      <div className="sb-container">
         <p>Error: {error}</p>
         <Link to={`/instructor/quizzes/${quizId}/edit`}>Back to editor</Link>
       </div>
@@ -157,22 +157,22 @@ export default function QuizSubmissionsPage() {
   const scoresPublished = Boolean(listData?.quiz?.scores_published);
 
   return (
-    <div className="bux-container bux-mar-top-sp-16 bux-mar-bottom-sp-32">
+    <div className="sb-container sb-mar-top-sp-16 sb-mar-bottom-sp-32">
       <p>
         <Link to={`/instructor/quizzes/${quizId}/edit`}>← Back to editor</Link>
       </p>
 
-      <div className="ba-quiz-submissions__topbar bux-mar-top-sp-16">
+      <div className="app-quiz-submissions__topbar sb-mar-top-sp-16">
         <div>
           <h2>Submissions: {listData?.quiz?.title}</h2>
-          <p className="bux-mar-top-sp-8">
+          <p className="sb-mar-top-sp-8">
             Review student answers, grade typed responses with AI, then publish scores.
           </p>
         </div>
-        <div className="ba-quiz-submissions__actions">
+        <div className="app-quiz-submissions__actions">
           <button
             type="button"
-            className="bux-button--alt-small"
+            className="sb-button--alt-small"
             onClick={handleDownloadCsv}
             disabled={grading || publishingScores || downloadingCsv}
           >
@@ -180,7 +180,7 @@ export default function QuizSubmissionsPage() {
           </button>
           <button
             type="button"
-            className="bux-button"
+            className="sb-button"
             onClick={handleGradeWithAi}
             disabled={grading || publishingScores || pendingTypedCount === 0}
           >
@@ -188,7 +188,7 @@ export default function QuizSubmissionsPage() {
           </button>
           <button
             type="button"
-            className="bux-button--alt-small"
+            className="sb-button--alt-small"
             onClick={handlePublishScores}
             disabled={grading || publishingScores}
           >
@@ -200,23 +200,23 @@ export default function QuizSubmissionsPage() {
       </div>
 
       {!scoresPublished && pendingTypedCount === 0 && (
-        <p className="ba-quiz-submissions__pending-note bux-mar-top-sp-8">
+        <p className="app-quiz-submissions__pending-note sb-mar-top-sp-8">
           Grading is up to date. Publish scores when students should see their marks.
         </p>
       )}
 
       {pendingTypedCount > 0 && (
-        <p className="ba-quiz-submissions__pending-note bux-mar-top-sp-8">
+        <p className="app-quiz-submissions__pending-note sb-mar-top-sp-8">
           {hasResubmitPending
             ? `A student has resubmitted — ${pendingTypedCount} typed answer${pendingTypedCount === 1 ? '' : 's'} need AI grading.`
             : `${pendingTypedCount} typed answer${pendingTypedCount === 1 ? '' : 's'} awaiting AI grading.`}
         </p>
       )}
 
-      <div className="ba-quiz-submissions__layout bux-mar-top-sp-24">
-        <div className="ba-quiz-submissions__list">
-          <h3 className="bux-card__heading">Students</h3>
-          <table className="ba-quiz-submissions-table bux-mar-top-sp-8">
+      <div className="app-quiz-submissions__layout sb-mar-top-sp-24">
+        <div className="app-quiz-submissions__list">
+          <h3 className="sb-card__heading">Students</h3>
+          <table className="app-quiz-submissions-table sb-mar-top-sp-8">
             <thead>
               <tr>
                 <th>Student</th>
@@ -240,12 +240,12 @@ export default function QuizSubmissionsPage() {
                 return (
                   <tr
                     key={student.email}
-                    className={isSelected ? 'ba-quiz-submissions-table__row--selected' : ''}
+                    className={isSelected ? 'app-quiz-submissions-table__row--selected' : ''}
                   >
                     <td>
                       <button
                         type="button"
-                        className="ba-quiz-submissions-table__student-btn"
+                        className="app-quiz-submissions-table__student-btn"
                         onClick={() => {
                           if (!submitted) return;
                           navigate(
@@ -254,11 +254,11 @@ export default function QuizSubmissionsPage() {
                         }}
                         disabled={!submitted}
                       >
-                        <span className="ba-quiz-submissions-table__name">
+                        <span className="app-quiz-submissions-table__name">
                           {student.name || student.email}
                         </span>
                         {student.name && (
-                          <span className="ba-quiz-submissions-table__email">
+                          <span className="app-quiz-submissions-table__email">
                             {student.email}
                           </span>
                         )}
@@ -268,7 +268,7 @@ export default function QuizSubmissionsPage() {
                     <td>
                       {!submitted && '—'}
                       {submitted && pendingTyped > 0 && (
-                        <span className="ba-quiz-submissions-badge ba-quiz-submissions-badge--pending">
+                        <span className="app-quiz-submissions-badge app-quiz-submissions-badge--pending">
                           Pending grading
                         </span>
                       )}
@@ -285,21 +285,21 @@ export default function QuizSubmissionsPage() {
           </table>
         </div>
 
-        <div className="ba-quiz-submissions__detail">
+        <div className="app-quiz-submissions__detail">
           {!selectedEmail && (
             <p>Select a submitted student to review their answers.</p>
           )}
           {selectedEmail && detailLoading && <p>Loading answers...</p>}
           {selectedEmail && !detailLoading && detailData && (
             <>
-              <h3 className="bux-card__heading">{selectedEmail}</h3>
+              <h3 className="sb-card__heading">{selectedEmail}</h3>
               {detailData.score && (
-                <p className="bux-mar-top-sp-8">
+                <p className="sb-mar-top-sp-8">
                   <strong>
                     Total: {detailData.score.points_earned} / {detailData.score.points_possible} points
                   </strong>
                   {(detailData.score.pending_typed_count ?? 0) > 0 && (
-                    <span className="ba-quiz-submissions-badge ba-quiz-submissions-badge--pending bux-mar-left-sp-8">
+                    <span className="app-quiz-submissions-badge app-quiz-submissions-badge--pending sb-mar-left-sp-8">
                       {detailData.score.pending_typed_count} typed answer
                       {detailData.score.pending_typed_count === 1 ? '' : 's'} pending AI grading
                     </span>

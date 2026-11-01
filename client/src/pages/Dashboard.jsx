@@ -14,9 +14,9 @@ function Dashboard() {
 
   if (!isAuthenticated) {
     return (
-      <div className="bux-container ba-container">
-        <div className="bux-grid">
-          <div className="bux-grid__cell--12 bux-grid__cell--6@md bux-pad-left-sp-32 ba-pad-left-sp-0">
+      <div className="sb-container app-container">
+        <div className="sb-grid">
+          <div className="sb-grid__cell--12 sb-grid__cell--6@md sb-pad-left-sp-32 app-pad-left-sp-0">
             <Login />
           </div>
         </div>
@@ -35,9 +35,9 @@ function Dashboard() {
   };
 
   return (
-    <div className="bux-container ba-container">
+    <div className="sb-container app-container">
       <Announcement>
-        <div className="ba-announcement__text">
+        <div className="app-announcement__text">
           How was your app experience?{' '}
           <a
             href="https://forms.office.com/r/qwxt92jLzP"

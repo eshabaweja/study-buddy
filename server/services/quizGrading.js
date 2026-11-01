@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { getGradingModel, getLiteLlmHeaders, getLiteLlmUrl } from '../config/llm.js';
+import { getGradingModel, getLlmHeaders, getLlmUrl } from '../config/llm.js';
 
 function stripHtml(html) {
   if (!html) return '';
@@ -76,10 +76,10 @@ ${studentAnswer || '(blank)'}`,
     },
   ];
 
-  const litellmUrl = getLiteLlmUrl();
-  const response = await fetch(litellmUrl, {
+  const llmUrl = getLlmUrl();
+  const response = await fetch(llmUrl, {
     method: 'POST',
-    headers: getLiteLlmHeaders(),
+    headers: getLlmHeaders(),
     body: JSON.stringify({
       model: getGradingModel(),
       messages,
@@ -90,13 +90,13 @@ ${studentAnswer || '(blank)'}`,
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`LiteLLM API Error: ${response.status} - ${errorText}`);
+    throw new Error(`LLM API Error: ${response.status} - ${errorText}`);
   }
 
   const completion = await response.json();
   const raw = completion.choices?.[0]?.message?.content;
   if (!raw) {
-    throw new Error('No response received from LiteLLM');
+    throw new Error('No response received from LLM');
   }
 
   return parseGradingResponse(raw, max);

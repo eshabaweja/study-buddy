@@ -1,6 +1,6 @@
 /**
  * Pull img src values from Quill/HTML question prompt text.
- * Supports data URLs and http(s) URLs used in Buckademy content.
+ * Supports data URLs and http(s) URLs used in Study Buddy content.
  */
 export function extractImageSrcs(html) {
   if (!html || typeof html !== 'string') return [];

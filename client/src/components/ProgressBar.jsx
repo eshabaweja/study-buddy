@@ -52,13 +52,13 @@ function ProgressBar(props) {
             <Confetti mode="boom" particleCount={50} colors={['#ff577f', '#ff884b']} />
         )}
         <div 
-            className="ba-progress-container bux-grid__cell--12@sm bux-grid__cell--6@md bux-grid__cell--4@lg bux-mar-all-sp-4"
+            className="app-progress-container sb-grid__cell--12@sm sb-grid__cell--6@md sb-grid__cell--4@lg sb-mar-all-sp-4"
             data-message={getProgressMessage(progress)}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <div ref={textRef} className='ba-progress-fill-text'>{name}</div>
-            <div ref={barRef} className="ba-progress-fill"></div>
+            <div ref={textRef} className='app-progress-fill-text'>{name}</div>
+            <div ref={barRef} className="app-progress-fill"></div>
         </div>
         </>
     );

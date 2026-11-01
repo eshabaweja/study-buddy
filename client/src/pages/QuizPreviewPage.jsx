@@ -60,17 +60,17 @@ export default function QuizPreviewPage() {
   }
   if (Number.isNaN(quizId)) {
     return (
-      <div className="bux-container bux-mar-top-sp-16">
+      <div className="sb-container sb-mar-top-sp-16">
         <p>Invalid quiz id.</p>
         <Link to="/dashboard">Back to dashboard</Link>
       </div>
     );
   }
 
-  if (loading) return <div className="bux-container">Loading preview...</div>;
+  if (loading) return <div className="sb-container">Loading preview...</div>;
   if (error) {
     return (
-      <div className="bux-container bux-mar-top-sp-16">
+      <div className="sb-container sb-mar-top-sp-16">
         <p>Error: {error}</p>
         <Link to={`/instructor/quizzes/${quizId}/edit`}>Back to editor</Link>
       </div>
@@ -78,21 +78,21 @@ export default function QuizPreviewPage() {
   }
 
   return (
-    <div className="bux-container bux-mar-top-sp-16 bux-mar-bottom-sp-32">
+    <div className="sb-container sb-mar-top-sp-16 sb-mar-bottom-sp-32">
       <p>
         <Link to={`/instructor/quizzes/${quizId}/edit`}>← Back to editor</Link>
       </p>
-      <p className="ba-quiz-preview-banner bux-mar-top-sp-16">
+      <p className="app-quiz-preview-banner sb-mar-top-sp-16">
         Instructor preview — this is how students see the quiz (answers are not saved here).
       </p>
-      <h2 className="bux-mar-top-sp-16">{quiz?.title}</h2>
+      <h2 className="sb-mar-top-sp-16">{quiz?.title}</h2>
       {quiz?.description && (
-        <div className="bux-mar-top-sp-8">
+        <div className="sb-mar-top-sp-8">
           <QuizFigureContent html={quiz.description} />
         </div>
       )}
       {quiz?.time_limit_minutes && (
-        <p className="bux-mar-top-sp-8">
+        <p className="sb-mar-top-sp-8">
           Time limit: {quiz.time_limit_minutes} minutes
         </p>
       )}
@@ -103,7 +103,7 @@ export default function QuizPreviewPage() {
         if (item.item_type === 'multiple_choice') {
           return (
             <div key={item.id}>
-              <p className="bux-mar-top-sp-16 bux-mar-bottom-sp-8">
+              <p className="sb-mar-top-sp-16 sb-mar-bottom-sp-8">
                 <strong>Question {index + 1}</strong> (multiple choice)
               </p>
               <QuizMcqItem
@@ -120,7 +120,7 @@ export default function QuizPreviewPage() {
         if (item.item_type === 'typed' || item.item_type === 'practice_question') {
           return (
             <div key={item.id}>
-              <p className="bux-mar-top-sp-16 bux-mar-bottom-sp-8">
+              <p className="sb-mar-top-sp-16 sb-mar-bottom-sp-8">
                 <strong>Question {index + 1}</strong> (typed answer)
               </p>
               <QuizTypedItem

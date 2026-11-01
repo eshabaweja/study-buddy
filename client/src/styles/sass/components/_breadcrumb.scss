@@ -1,0 +1,41 @@
+
+.sb-breadcrumb {
+	display: block;
+	margin: $sp-16 0;
+	line-height: $sp-24;
+}
+
+.sb-breadcrumb__item {
+	position: relative;
+	display: inline-block;
+	color: $gray-dark-40;
+	font-weight: 400;
+	font-size: $ts-sm;
+
+	&::after {
+		font-size: 10px;
+		content: "\203A";
+		font-family: $icon;
+		margin-right: $sp-4;
+	}
+}
+
+.sb-breadcrumb__item--current::after {
+	content: "";
+}
+
+.sb-breadcrumb__link {
+	@include link-base(none, no);
+	color: $brand;
+	margin-right: $sp-4;
+}
+
+// Background variant.
+.sb-breadcrumb--alt {
+	background: $gray-light-20;
+	border-radius: 4px;
+	padding: $sp-8;
+	.sb-breadcrumb__link {
+		@include link-base(light, no);
+	}
+}

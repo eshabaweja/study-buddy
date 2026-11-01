@@ -1,0 +1,35 @@
+
+.sb-link {
+  @include link-base;
+
+  &--before {
+    &:before {
+      content: "\2190";
+      font-size: $ts-sm;
+      font-family: $icon;
+      padding-right: $sp-4;
+    }
+  }
+
+  &--after {
+    &:after {
+      content: "\2197";
+      font-size: $ts-sm;
+      font-family: $icon;
+      padding-left: $sp-4;
+    }
+  }
+}
+
+.sb-link--reverse {
+  @include link-base(dark);
+}
+
+.sb-link--alt {
+  @include link-base(light);
+}
+
+.sb-link--brand {
+  @include link-base(brand);
+}
+

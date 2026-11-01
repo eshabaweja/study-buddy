@@ -156,10 +156,10 @@ const AddQuestionForm = () => {
   }, [success]);
 
   return (
-    <div className="bux-mar-top-sp-32">
+    <div className="sb-mar-top-sp-32">
       <h3>Add a New Question</h3>
-      <form className="bux-form" onSubmit={handleSubmit}>
-        <div className="bux-mar-bottom-sp-16">
+      <form className="sb-form" onSubmit={handleSubmit}>
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="courseCode">Course *</label>
           <select
             id="courseCode"
@@ -179,7 +179,7 @@ const AddQuestionForm = () => {
           </select>
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="questionText">Question Text *</label>
           <QuillEditor
             key={`questionText-${editorResetKey}`}
@@ -188,7 +188,7 @@ const AddQuestionForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="goal">Goal</label>
           <QuillEditor
             key={`goal-${editorResetKey}`}
@@ -197,7 +197,7 @@ const AddQuestionForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="explicitData">Explicit Data</label>
           <QuillEditor
             key={`explicit-${editorResetKey}`}
@@ -206,7 +206,7 @@ const AddQuestionForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="implicitData">Implicit Data</label>
           <QuillEditor
             key={`implicit-${editorResetKey}`}
@@ -215,7 +215,7 @@ const AddQuestionForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="solution">Solution in plain words (English)</label>
           <QuillEditor
             key={`solution-${editorResetKey}`}
@@ -224,7 +224,7 @@ const AddQuestionForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label htmlFor="mathematicalSolution">Mathematical Solution</label>
           <QuillEditor
             key={`mathSolution-${editorResetKey}`}
@@ -233,7 +233,7 @@ const AddQuestionForm = () => {
           />
         </div>
 
-        <div className="bux-mar-bottom-sp-16">
+        <div className="sb-mar-bottom-sp-16">
           <label>Associate Concepts (Optional)</label>
           {courseConcepts.length === 0 ? (
             <p style={{ color: "#666", fontStyle: "italic" }}>
@@ -257,7 +257,7 @@ const AddQuestionForm = () => {
           )}
         </div>
 
-        <button type="submit" className="bux-button">
+        <button type="submit" className="sb-button">
           Add Question
         </button>
       </form>

@@ -39,19 +39,19 @@ function InstructorPage() {
   ];
 
   return (
-    <div className="ba-dashboard">
-      <div className="ba-dashboard__header">
-        <h2 className="ba-dashboard__title">Instructor Dashboard</h2>
+    <div className="app-dashboard">
+      <div className="app-dashboard__header">
+        <h2 className="app-dashboard__title">Instructor Dashboard</h2>
       </div>
 
-      <div className="ba-dashboard__cards bux-grid">
+      <div className="app-dashboard__cards sb-grid">
         {cards.map((card) => (
           <div
             key={card.id}
-            className="bux-grid__cell bux-grid__cell--12 bux-grid__cell--6@md bux-grid__cell--3@lg"
+            className="sb-grid__cell sb-grid__cell--12 sb-grid__cell--6@md sb-grid__cell--3@lg"
           >
             <div
-              className={`ba-card ba-dashboard-card${expandedSection === card.id ? ' ba-dashboard-card--active' : ''}`}
+              className={`app-card app-dashboard-card${expandedSection === card.id ? ' app-dashboard-card--active' : ''}`}
               onClick={() => {
                 if (card.href) {
                   window.open(card.href, '_blank', 'noopener,noreferrer');
@@ -72,11 +72,11 @@ function InstructorPage() {
               role="button"
               tabIndex={0}
             >
-              <div className="ba-card__content">
-                <div className="ba-card__heading">
+              <div className="app-card__content">
+                <div className="app-card__heading">
                   <span>{card.icon} {card.title}</span>
                 </div>
-                <p className="ba-dashboard-card__desc">{card.description}</p>
+                <p className="app-dashboard-card__desc">{card.description}</p>
               </div>
             </div>
           </div>
@@ -84,12 +84,12 @@ function InstructorPage() {
       </div>
 
       {expandedSection === 'course-analytics' && (
-        <div className="ba-dashboard__panel">
-          <div className="ba-dashboard__panel-header">
-            <h3 className="ba-dashboard__panel-title">Course Analytics</h3>
+        <div className="app-dashboard__panel">
+          <div className="app-dashboard__panel-header">
+            <h3 className="app-dashboard__panel-title">Course Analytics</h3>
             <button
               type="button"
-              className="bux-button bux-button--secondary"
+              className="sb-button sb-button--secondary"
               onClick={() => toggleSection('course-analytics')}
             >
               Collapse
@@ -100,12 +100,12 @@ function InstructorPage() {
       )}
 
       {expandedSection === 'student-analytics' && (
-        <div className="ba-dashboard__panel">
-          <div className="ba-dashboard__panel-header">
-            <h3 className="ba-dashboard__panel-title">Student Analytics</h3>
+        <div className="app-dashboard__panel">
+          <div className="app-dashboard__panel-header">
+            <h3 className="app-dashboard__panel-title">Student Analytics</h3>
             <button
               type="button"
-              className="bux-button bux-button--secondary"
+              className="sb-button sb-button--secondary"
               onClick={() => toggleSection('student-analytics')}
             >
               Collapse
@@ -116,12 +116,12 @@ function InstructorPage() {
       )}
 
       {expandedSection === 'course-management' && (
-        <div className="ba-dashboard__panel">
-          <div className="ba-dashboard__panel-header">
-            <h3 className="ba-dashboard__panel-title">Course Management</h3>
+        <div className="app-dashboard__panel">
+          <div className="app-dashboard__panel-header">
+            <h3 className="app-dashboard__panel-title">Course Management</h3>
             <button
               type="button"
-              className="bux-button bux-button--secondary"
+              className="sb-button sb-button--secondary"
               onClick={() => toggleSection('course-management')}
             >
               Collapse

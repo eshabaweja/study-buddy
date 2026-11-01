@@ -5,7 +5,7 @@ import {
   SESSION_RELOGIN_MESSAGE,
 } from './sessionAuth';
 
-const SESSION_TOAST_ID = 'ba-session-expired';
+const SESSION_TOAST_ID = 'app-session-expired';
 
 /** One combined toast for session expiry (deduped by toastId). */
 export function showSessionExpiredToast(message = SESSION_RELOGIN_MESSAGE) {

@@ -23,11 +23,11 @@ export default function PracticeQuizItem({ questionId }) {
     };
   }, [questionId]);
 
-  if (error) return <p className="bux-mar-bottom-sp-16">Error: {error}</p>;
-  if (!question) return <p className="bux-mar-bottom-sp-16">Loading question...</p>;
+  if (error) return <p className="sb-mar-bottom-sp-16">Error: {error}</p>;
+  if (!question) return <p className="sb-mar-bottom-sp-16">Loading question...</p>;
 
   return (
-    <div className="bux-mar-bottom-sp-16">
+    <div className="sb-mar-bottom-sp-16">
       <Question
         mode="quiz"
         question={question}
