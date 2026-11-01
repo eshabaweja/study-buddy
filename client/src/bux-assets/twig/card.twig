@@ -1,0 +1,74 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+Card
+
+Available variables:
+
+- modifier:             Sets the card variant. Allowed values: null, gray, 
+                        no-border, linked-headline, storytelling, featured, 
+                        horizontal, horizontal-storytelling
+- card_heading_level:   Integer. Sets the heading level of the card heading.
+- card_image:           Boolean. Set to true to display image.
+- image_url:            URL for the card image. 
+- image_alt_text:       Alt text for the card image.
+- card_heading:         String for the card heading.
+- card_body:            Content of the card body. Optional. 
+- card_url:             URL for the card.
+- card_cta:             String for the card CTA.
+- taxonomy:             String for the storytelling card taxonomy.
+- read_time:            String for the storytelling card read time.
+
+#}
+
+<div class="bux-card {% if modifier %}bux-card--{{ modifier }}{% endif %}">
+  <a class="bux-card__link" href="{{ card_url }}" aria-hidden="true" tabindex="-1"></a>
+  {% if card_image %}
+    {% set class = 'bux-image--16x9' %}
+    {% include base_path ~ directory ~ bux ~ '/twig/image.twig' %}
+  {% endif %}
+  <div class="bux-card__content">
+
+  {% if taxonomy %}
+    <span class="bux-card__taxonomy">
+      {{ taxonomy }}
+    </span>
+  {% endif %}
+    
+    <h{{ card_heading_level|default(2) }} class="bux-card__heading">
+    {% if modifier == "linked-headline" %}
+    <a href="{{ card_url }}" class="bux-card__heading--link">
+    {% elseif modifier == "storytelling" or modifier == "horizontal-storytelling" %}
+    <a href="{{ card_url }}" class="bux-card__heading--storytelling-link">
+    {% endif %}
+      <span>{{ card_heading }}</span>
+      {% if modifier == "linked-headline" or modifier == "storytelling" or modifier == "horizontal-storytelling" %}
+    </a>
+    {% endif %}
+    </h{{ card_heading_level|default(2) }}>
+    
+    {% if card_body %}
+      <div class="bux-card__body">
+        {{ card_body }}
+      </div>
+    {% endif %}
+    {% if modifier == "linked-headline" %}
+    {% elseif modifier == "storytelling" or modifier == "horizontal-storytelling" %}
+      <span class="bux-card__read-time">{{ read_time }}</span>
+    {% elseif card_cta %}
+        {% if modifier == "featured" %}
+            <a class="bux-button bux-button--alt" href="{{ card_url }}">{{ card_cta }}</a>
+        {% else %}
+            <div class="bux-card__cta">
+                <a href="{{ card_url }}">
+                    <span>{{ card_cta }}</span>
+                </a>
+            </div>
+        {% endif %}
+    {% endif %}
+  </div>
+</div>

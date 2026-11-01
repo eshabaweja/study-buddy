@@ -1,0 +1,59 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+Tile
+
+Note: the tile can have an image, image icon, BUX icon, or no image. 
+
+Available variables:
+
+- tile_img_url:           URL for tile image.
+- tile_image_alt_text:      Alt text for tile image.
+- image_ratio:              Sets the tile's image ratio. Allowd values: 3x2, 1x1
+- ui_icon:                  Machine name of BUX Icon.
+- tile_std_icon_url:        URL for the tile image icon.
+- tile_std_icon_alt_text:   String. Alt text for the image icon.
+- h_level:                  Integer. Sets the heading level of the tile header.
+- tile_url:                 URL for the tile.
+- tile_text:                String for the tile text.
+- tile_body:                Extra tile content. Optional.
+
+#}
+
+<div class="bux-tile{% if modifier %} bux-tile--{{modifier}}{% endif %}">
+    <a class="bux-tile__link" href="{{ tile_url }}" aria-hidden="true" tabindex="-1"></a>
+
+    {% if tile_img_url %}
+        {% set image_url = tile_img_url %}
+        {% set image_alt_text = tile_img_alt_text %}
+        {% set class = 'bux-image--' ~ image_ratio %}
+        {% include base_path ~ directory ~ bux ~ '/twig/image.twig' %}
+        <div class="bux-tile__content">
+    {% elseif ui_icon %}
+        <div class="bux-tile__content">
+            <span class="bux-tile__ui_icon {{ui_icon}}" aria-hidden="true"></span>
+    {% elseif tile_std_icon_url %}
+        <div class="bux-tile__content">
+            {% set image_url = tile_std_icon_url %}
+            {% set image_alt_text = tile_std_icon_alt_text %}
+            {% set class = 'bux-tile__std_icon' %}
+            {% include base_path ~ directory ~ bux ~ '/twig/image.twig' %}
+    {% else %}
+        <div class="bux-tile__content">
+    {% endif %}
+
+    {% if h_level %}<h{{ h_level|default(2) }} class="bux-tile__header">{% endif %} 
+    <a class="bux-tile__text" href="{{ tile_url }}">
+        {{tile_text}}
+    </a>
+    {% if h_level %}</h{{ h_level|default(2) }}>{% endif %}
+
+    {% if tile_body %}
+      <div class="bux-tile__body"> {{ tile_body }} </div>
+    {% endif %}  
+  </div>
+</div>

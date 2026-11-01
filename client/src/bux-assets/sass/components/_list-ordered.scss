@@ -1,0 +1,56 @@
+/*
+ * Buckeye UX - version 1.0.15
+ * Copyright (C) 2024 The Ohio State University
+ */
+
+ol.bux-list-ol {
+    padding-left: 40px;
+    font-family: $serif;
+    li {
+        list-style-type: decimal;
+        margin-left: $sp-16;
+        margin-bottom: $sp-8;
+        padding-left: $sp-8;
+        line-height: 1.5;
+        font-size: $ts-base;
+
+        ol {
+            margin-top: $sp-8;
+            padding-left: $sp-24;
+            li {
+                list-style: lower-alpha;
+
+                ol li {
+                    list-style: lower-roman;
+                }
+                ul {
+                    @extend .bux-list-ul;
+                    padding-left: $sp-24 !important;
+                    margin-top: $sp-8 !important;
+                    ol {
+                        li {
+                            padding-left: $sp-8;
+                            &:before {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Fix for nested ul in ol
+    ul {
+        @extend .bux-list-ul;
+        padding-left: $sp-24 !important;
+        margin-top: $sp-8 !important;
+        ol {
+            li {
+                padding-left: $sp-8;
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+}

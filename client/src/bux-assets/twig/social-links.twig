@@ -1,0 +1,31 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+Social Links
+
+Available variables:
+
+- background_color:     Sets the background color for the social links.
+                        Allowed values: light, white, dark.
+- social_links:         Array containing the social link items
+- social_link.name:     Name of the social media item. Read by screen readers.
+- social_link.icon:     Icon name for the social media item. Machine name from
+                        the BUX Icon library.
+- social_link.url:      URL for the social media item.
+
+#}
+
+<ul class="bux-social-links{% if background_color %} bux-social-links--{{ background_color }}{% endif %}">
+  {% for social_link in social_links %}
+  <li class="bux-social-links__item bux-social-links__item--{{ social_link.name }}">
+    <a class="bux-social-links__link" href="{{ social_link.url }}" target="_blank">
+      <span class="visually-hidden">{{ social_link.name }} profile — external</span>
+      <span class="icon {{ social_link.icon }}" aria-hidden="true"></span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

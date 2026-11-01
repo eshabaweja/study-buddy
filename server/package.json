@@ -1,0 +1,33 @@
+{
+  "name": "buckademy-server",
+  "version": "1.0.0",
+  "description": "Backend server for Buckademy",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "migrate:question-images": "node scripts/migrateQuestionImagesToHtml.js",
+    "migrate:question-images:dry-run": "node scripts/migrateQuestionImagesToHtml.js --dry-run",
+    "migrate:figure-description-columns": "node scripts/ensureFigureDescriptionColumns.js",
+    "backfill:figure-descriptions": "node scripts/backfillFigureDescriptions.js",
+    "backfill:figure-descriptions:dry-run": "node scripts/backfillFigureDescriptions.js --dry-run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.817.0",
+    "argon2": "^0.43.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.2.0",
+    "openai": "^5.8.2",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}

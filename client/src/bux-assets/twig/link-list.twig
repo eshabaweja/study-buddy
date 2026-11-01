@@ -1,0 +1,34 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+Link List
+
+Available variables:
+
+- items:        Array of link items.
+- item.url:     URL for the link item.
+- item.text:    String for the item link.
+
+#}
+
+<ul class="bux-link-list" role="list">
+	{% for item in items %}	
+	<li class="bux-link-list__item">
+		<a
+			class="bux-text-link"
+			href="{{ item.url }}"
+		>
+			{{ item.link }}
+		</a>
+		{% if item.text %}
+		<div class="bux-link-list__text">
+			{{ item.text }}
+		</div>
+		{% endif %}
+	</li>
+	{% endfor %}
+</ul>

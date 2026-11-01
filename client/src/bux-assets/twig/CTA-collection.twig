@@ -1,0 +1,43 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+CTA Collection
+
+Available variables:
+
+- modifier:     Sets the style variant of the componet. Allowed values: 
+                null, icons, standard-icons, gray  
+- links:        An array containing the values for each displayed link
+- link.url:     URL for the link
+- link.name:    Display name for the link.
+- link.icon:    If using icons modifier, takes the machine-name of the BUX icon
+                library. If using the standard-icons modifier, takes a URL for
+                an SVG icon.
+#}
+
+
+<div class="bux-cta-collection 
+            {% if modifier %}
+            bux-cta-collection--{{modifier}}
+            {% endif %}
+            ">
+    <ul>
+        {% for link in links %}
+        <li>
+            <a class="bux-cta-collection__link" href={{link.url}}>
+                {% if modifier == 'icons' %}
+                <span class="icon icon-{{ link.icon }}" aria-hidden="true"></span>
+                {% endif %}
+                {% if modifier == 'standard-icons' %}
+                <img class="standard-icon" src="{{ link.icon }}" alt="" />
+                {% endif %}
+                {{link.name}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

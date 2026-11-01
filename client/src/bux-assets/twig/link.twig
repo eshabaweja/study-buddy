@@ -1,0 +1,31 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+Link
+
+Available variables:
+
+- modifier:         Sets the link variant. Allowed values: null, alt, reverse,
+                    scarlet, before, after
+- link_url:         URL for the link.
+- link_text:        String for the link text.
+- attributes:       Array of link attributes.
+- attribute.label:  Label of link attribute.
+- attribute.value:  Value of link attribute.
+
+#}
+
+<div class="bux-link-example{% if modifier %} bux-link-example--{{ modifier }}{% endif %}">
+<p>This is an 
+    <a class=
+        "bux-link{% if modifier %} bux-link--{{ modifier }}{% endif %}" 
+        href="{{ link_url }}" 
+        {% for attribute in attributes %} 
+            {{attribute.label}}="{{attribute.value}}" 
+        {% endfor %}>{{ link_text }}</a>.
+</p>
+</div>

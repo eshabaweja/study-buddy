@@ -1,0 +1,26 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+Panel
+
+Available variables:
+
+- panel_heading_level:  Integer value for the heading level of the panel title.
+- panel_title:          String for the panel title.
+- panel_text:           Content of the panel.
+- link_url:             URL of the panel link.
+- link_text:            String for the panel button.
+
+#}
+
+<div class="bux-panel">
+	<h{{ panel_heading_level|default(2) }} class="bux-panel__heading">
+       {{ panel_title }} 
+    </h{{ panel_heading_level|default(2) }}>
+	<p>{{ panel_text }}</p>
+	<a href="{{ link_url }}" class="bux-button">{{ link_text }}</a>
+</div>

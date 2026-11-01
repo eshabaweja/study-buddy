@@ -1,0 +1,50 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+Accordion
+
+Available variables:
+
+- modifier:         Sets the type of accordion. 'default' or 'details'.  
+- heading_level:    Integer value that sets the heading level of the title.
+- items:            An array containing the accordion items.
+- item.id:          Unique id for the accordion.
+- item.title:       Title of the accordion.
+- item.content:     Content of the accordion.
+
+#}
+
+{% if modifier == "default" %}
+<div class="bux-accordion" data-allow-multiple>
+	{% for item in items %}
+		{% set triggerId = "bux-accordion__trigger--" ~ item.id %}
+		{% set panelId = "bux-accordion__panel--" ~ item.id %}
+		<h{{heading_level|default("2")}} class="bux-accordion__heading">
+			<button id="{{ triggerId }}" type="button" class="bux-accordion__trigger" aria-controls="{{ panelId }}" aria-expanded="false">
+				<span class="bux-accordion__icon" aria-hidden="true"></span>
+				<span class="bux-accordion__title">
+					{{ item.title }}
+				</span>
+			</button>
+		</h{{heading_level|default("2")}}>
+		<div id="{{ panelId }}" class="bux-accordion__panel" role="region" aria-labelledby="{{ triggerId }}" hidden>
+			{{ item.content }}
+		</div>
+	{% endfor %}
+</div>
+{% elseif modifier == "details" %}
+{% for item in items %}
+<div class="bux-details__wrapper">
+<details class="bux-details">
+  <summary class="bux-details__summary">{{ item.title }}</summary>
+  <div class="bux-details__inner">
+		{{ item.content }}
+	</div>
+</details>
+</div>
+{% endfor %}
+{% endif %}

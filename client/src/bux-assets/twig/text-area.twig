@@ -1,0 +1,36 @@
+{#
+Buckeye UX - version 1.0.15
+Copyright (C) 2024 The Ohio State University
+#}
+
+{# 
+
+Text Area
+
+Available variables:
+
+- required:         Boolean. Set to true to require form element.
+- modifier:         Sets the variant of the form item. Allowed values: null, 
+                    error, disabled.
+- input_label:           String for the form legend.
+- helper_text:      String for the form helper text.
+- placeholder_text: Strong for the form's placeholder text.
+- error_helper_text:Content for the error helper text.
+
+#}
+
+{% set random_seed = random() %}
+{% set text_area_id =  "text-area-" ~ random_seed %}
+
+<div class="bux-text-area">
+    <label class="bux-text-area__label" for="bux-text-area__{{ text_area_id }}">{{ input_label }}{% if required %} <span class="bux-text-area__required">{{required}}</span>{% endif %}</label>
+    <span class="bux-text-area__helper-text" id="bux-text-area__helper-text-{{ random_seed }}">{{ helper_text }}</span>
+    <textarea id="bux-text-area__{{ text_area_id }}" class="bux-text-area__text-area{% if modifier %} bux-text-area__text-area--{{ modifier }}{% endif %}" 
+    {% if required %} required {% endif %} 
+    {% if "disabled" in modifier %} disabled="disabled" {% endif %}
+    {% if "error" in modifier %} aria-invalid="true" {% endif %}
+    placeholder="{{ placeholder_text }}" aria-describedby="{% if "error" in modifier %} bux-text-area__error-message-{{ random_seed }} {% endif %}bux-text-area__helper-text-{{ random_seed }}"></textarea>
+    {% if "error" in modifier %}
+        <span class="bux-text-area__error-message" id="bux-text-area__error-message-{{ random_seed }}">{{ error_helper_text}}</span>
+    {% endif %}
+</div>
