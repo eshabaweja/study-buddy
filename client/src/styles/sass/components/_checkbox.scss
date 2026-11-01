@@ -25,7 +25,13 @@
       height: 20px;
 
       &:before {
-        content: "\2713";
+        content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-check) center / contain no-repeat;
+  mask: var(--sb-icon-check) center / contain no-repeat;
         font-family: inherit;
         color: $white;
         z-index: 99;

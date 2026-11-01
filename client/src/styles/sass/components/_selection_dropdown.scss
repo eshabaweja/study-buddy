@@ -31,7 +31,13 @@
     }
 
     &:before {
-      content: "\25BE";
+      content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-down) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-down) center / contain no-repeat;
       font-size: 22px;
       font-family: inherit;
       background-color: $white;

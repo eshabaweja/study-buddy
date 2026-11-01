@@ -18,7 +18,13 @@ div.sb-container--menu { //backwards compatibility
       &::after {
         // Down arrow
         font-family: inherit; 
-        content: "\25BE";
+        content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-down) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-down) center / contain no-repeat;
         color: $gray-dark-80;
         position: relative;
         top: -1px;
@@ -28,14 +34,26 @@ div.sb-container--menu { //backwards compatibility
       &[aria-expanded=true] {
         &::after {
           // Up arrow
-          content: "\25B4";
+          content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-up) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-up) center / contain no-repeat;
         }
       }
       
       &[aria-expanded=false] {
         &::after {
           // Down arrow
-          content: "\25BE";
+          content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-down) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-down) center / contain no-repeat;
         }
       }
     }
@@ -180,13 +198,25 @@ div.sb-container--menu { //backwards compatibility
 
             &[aria-expanded=true] {
               &::after {
-                content: "\25BE";
+                content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-down) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-down) center / contain no-repeat;
               }
             }
             
             &[aria-expanded=false] {
               &::after {
-                content: "\25BE";
+                content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-down) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-down) center / contain no-repeat;
               }
             }
           }
@@ -357,7 +387,13 @@ div.sb-container--menu { //backwards compatibility
     
     &[aria-expanded=false]::after {
         // Hamburger icon.
-        content: "\2630";
+        content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-menu) center / contain no-repeat;
+  mask: var(--sb-icon-menu) center / contain no-repeat;
         font-family: inherit;
         position: absolute;
         margin-left: 8px;
@@ -372,7 +408,13 @@ div.sb-container--menu { //backwards compatibility
 
     &[aria-expanded=true]::after {
       // Close "X" icon.
-        content: "\00D7";
+        content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-x) center / contain no-repeat;
+  mask: var(--sb-icon-x) center / contain no-repeat;
         font-family: inherit;
         position: absolute;
         margin-left: 8px;

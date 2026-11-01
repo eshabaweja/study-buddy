@@ -14,7 +14,13 @@
 
 	&::after {
 		font-size: 10px;
-		content: "\203A";
+		content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-right) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-right) center / contain no-repeat;
 		font-family: $icon;
 		margin-right: $sp-4;
 	}

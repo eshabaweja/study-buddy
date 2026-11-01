@@ -69,7 +69,13 @@
       background-color: transparent;
       border: none;
       &:after {
-        content: "\21C5";
+        content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-arrow-up-down) center / contain no-repeat;
+  mask: var(--sb-icon-arrow-up-down) center / contain no-repeat;
         font-family: $icon;
         color: $gray-dark-80;
         margin-left: $sp-4;
@@ -83,13 +89,25 @@
 	}
 	.th-sort-asc {
     button::after	{
-		  content: "\25B4";
+		  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-up) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-up) center / contain no-repeat;
 		  font-family: $icon;
     }
 	}
 	.th-sort-desc {
     button::after	{
-		  content: "\25BE";
+		  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-down) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-down) center / contain no-repeat;
 		  font-family: $icon;
     }
 	}

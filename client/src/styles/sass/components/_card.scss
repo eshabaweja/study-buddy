@@ -73,7 +73,13 @@ sb-card .sb-image {
   margin-top: $sp-8;
 
   &::before {
-    content: "\23F2";
+    content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-clock) center / contain no-repeat;
+  mask: var(--sb-icon-clock) center / contain no-repeat;
     font-family: $icon;
     font-size: $ts-sm;
     margin-right: 6px;
@@ -109,7 +115,13 @@ sb-card .sb-image {
     display: table;
 
     &::after {
-      content: "\203A";
+      content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-right) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-right) center / contain no-repeat;
       font-size: $ts-sm;
       font-family: $icon;
       font-weight: 600;
@@ -157,7 +169,13 @@ sb-card .sb-image {
   pointer-events: all;
 
   &::after {
-    content: "\203A";
+    content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-right) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-right) center / contain no-repeat;
     font-size: $ts-md;
     font-family: $icon;
     color: $brand;

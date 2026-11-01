@@ -60,14 +60,26 @@
 
 .sb-doc-pagination__label--prev {
 	&:before {
-		content: "\2039";
+		content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-left) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-left) center / contain no-repeat;
 		margin-right: $sp-8;
 	}
 }
 
 .sb-doc-pagination__label--next {
 	&:after {
-		content: "\203A";
+		content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-right) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-right) center / contain no-repeat;
 		margin-left: $sp-8;
 	}
 }

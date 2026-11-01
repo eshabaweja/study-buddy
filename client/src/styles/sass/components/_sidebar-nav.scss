@@ -14,8 +14,13 @@ div.sb-container--sidebar-nav {
 
             &::after {
                 // Down arrow
-                font-family: inherit;
-                content: "\25BE";
+                content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-down) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-down) center / contain no-repeat;
                 color: $gray-dark-80;
                 position: relative;
                 top: -1px;
@@ -25,14 +30,26 @@ div.sb-container--sidebar-nav {
             &[aria-expanded="true"] {
                 &::after {
                     // Up arrow
-                    content: "\25B4";
+                    content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-up) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-up) center / contain no-repeat;
                 }
             }
 
             &[aria-expanded="false"] {
                 &::after {
                     // Down arrow
-                    content: "\25BE";
+                    content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-down) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-down) center / contain no-repeat;
                 }
             }
 

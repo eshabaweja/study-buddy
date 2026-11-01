@@ -86,14 +86,26 @@ $sp-nav: 44px;
 
     &--left {
       &::before {
-        content: "\2039";
+        content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-left) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-left) center / contain no-repeat;
         margin: auto;
       }
     }
 
     &--right {
       &::before {
-        content: "\203A";
+        content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-right) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-right) center / contain no-repeat;
         margin: auto;
       }
     }

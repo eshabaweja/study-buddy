@@ -2194,3 +2194,15 @@ input.app-input-narrow {
   line-height: 1.45;
   color: #1b1b1b;
 }
+
+/* Header logo + site name */
+.app-header-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+.app-header-brand img {
+  display: block;
+  border-radius: 10px;
+}

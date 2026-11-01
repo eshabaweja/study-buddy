@@ -6,7 +6,10 @@ function Header() {
             >
                 <div className="sb-header__site-name-container">
                     <div className="sb-header__site-name">
-                        <a href="#">Study Buddy</a>
+                        <a href="/" className="app-header-brand">
+                            <img src="/brand/logo.svg" alt="" width="40" height="40" />
+                            <span>Study Buddy</span>
+                        </a>
                     </div>
                 </div>
             </div>

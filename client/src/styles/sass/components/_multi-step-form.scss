@@ -72,7 +72,13 @@
 
     &--complete {
       &::before {
-        content: "\2713";
+        content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-check) center / contain no-repeat;
+  mask: var(--sb-icon-check) center / contain no-repeat;
         font-size: 11px;
         transform: scale(1);
       }

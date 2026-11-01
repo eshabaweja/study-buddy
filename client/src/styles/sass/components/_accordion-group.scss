@@ -50,12 +50,24 @@
 	font-size: $ts-base;
 	left: $sp-16;
 	top: 36%;
-	content: "\203A";
+	content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-right) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-right) center / contain no-repeat;
 	font-family: $icon;
 }
 
 .sb-accordion__trigger[aria-expanded="true"] .sb-accordion__icon:before {
-	content: "\25B4";
+	content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-up) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-up) center / contain no-repeat;
 }
 
 .sb-accordion__panel {
@@ -111,7 +123,13 @@
 		margin-right: rem-calc(10);
 		color: $brand;
 		font-size: $ts-base;
-		content: "\203A";
+		content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-right) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-right) center / contain no-repeat;
 		font-family: $icon;
 	}
 }
@@ -145,7 +163,13 @@
 		}
 
 		&:before {
-			content: "\25B4";
+			content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--sb-icon-chevron-up) center / contain no-repeat;
+  mask: var(--sb-icon-chevron-up) center / contain no-repeat;
 		}
 	}
 }
