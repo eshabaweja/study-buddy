@@ -42,10 +42,10 @@ cd ../server && npm install
 
 ```bash
 createdb study_buddy
-psql -d study_buddy -f server/db/create_database.txt
+cd server
+npm run db:setup   # base schema + migrations, each applied once and recorded in schema_migrations
+npm run db:seed    # optional: synthetic demo instructor, demo student and one demo course
 ```
-
-Then apply the files in `server/db/migrations/` in the order listed in [that folder's README](server/db/migrations/README.md).
 
 ### 4. Configure environment variables
 
@@ -64,7 +64,7 @@ DB_PASSWORD=your_password
 `server/.env`
 
 ```bash
-JWT_SECRET=a_long_random_string
+JWT_SECRET=run_openssl_rand_-hex_32_and_paste_it_here   # 32+ characters, the server refuses to start otherwise
 ADMIN_EMAIL=you@example.com
 
 # AI provider (OpenAI-compatible)
@@ -78,6 +78,9 @@ LLM_MODEL=your-model-id
 | `JWT_SECRET` | yes | Signs login tokens |
 | `ADMIN_EMAIL` | no | Email address that gets admin access (default `admin@example.com`) |
 | `PORT` | no | Server port (default `3001`) |
+| `ALLOWED_ORIGINS` | no | Comma-separated browser origins allowed by CORS (default `http://localhost:5173`) |
+| `DEMO_MODE` | no | `true` shows "Demo as student/instructor" buttons on the login form |
+| `LLM_DAILY_LIMIT_PER_USER`, `LLM_DAILY_LIMIT_GLOBAL` | no | Daily AI-call caps (defaults 100 per user, 1000 total) |
 | `LLM_BASE_URL`, `LLM_API_KEY` | for AI features | Provider endpoint and key. The server calls `${LLM_BASE_URL}/v1/chat/completions` |
 | `LLM_MODEL` | no | Default model for tutor and grading |
 | `LLM_TUTOR_MODEL`, `LLM_GRADING_MODEL`, `LLM_VISION_MODEL` | no | Override the model per feature |
@@ -95,6 +98,50 @@ cd client && npm run dev
 ```
 
 Open the URL Vite prints (usually http://localhost:5173).
+
+## Run with Docker
+
+```bash
+docker compose up --build
+```
+
+Open http://localhost:3001. This starts Postgres and the app (API and built client in one container), creates the schema, seeds demo data, and enables demo mode. Set `LLM_BASE_URL`, `LLM_API_KEY` and `LLM_MODEL` in your shell first to enable the AI tutor.
+
+In this single-container layout the API is served under `/api` so it cannot collide with client routes such as `/quizzes/:id`. In local development (two dev servers) the API stays at the root.
+
+## Deploy
+
+[`render.yaml`](render.yaml) is a Render Blueprint for a free-tier deployment: a Docker web service plus a Postgres database. In Render choose **New > Blueprint**, select the repo, then add the `LLM_*` variables in the dashboard. Notes for a public demo:
+
+- Keep `DEMO_MODE=true` and the daily LLM limits low. Visitors then use two synthetic accounts and cannot spend more than the global cap.
+- Free tiers sleep when idle and free Postgres instances expire, so the first visit can be slow and data is disposable. The seed runs on every start, which is why the demo data comes back.
+- Uploaded files live on the container's disk and disappear on redeploy. Use object storage before relying on uploads in production.
+
+## Security model
+
+| Concern | What the app does |
+|---------|-------------------|
+| Passwords | Hashed with argon2; minimum 8 characters; login errors do not reveal whether an email exists |
+| Sessions | JWT signed with `JWT_SECRET` (the server will not start without a strong one); expiry handled in the client |
+| Authorization | Role middleware (`requireInstructor`, `requireStudent`, `requireAuth`); every course write also checks `instructor_email` ownership |
+| Paid AI calls | `/openai-api` and PDF conversion require login, are rate limited per user, and share a daily budget; AI grading counts against the same budget |
+| Prompt injection | The tutor accepts only `user` and `assistant` turns from the client, capped in length and count, so a client cannot rewrite the tutor's rules |
+| Abuse | Global and per-route rate limits (stricter on login), request body size limit |
+| Browser | `helmet` security headers including a Content-Security-Policy, strict CORS allow-list |
+| Errors | Internal errors return a generic message; details are logged server-side only |
+
+Known limits, on purpose: rate-limit and budget counters are in memory (fine for one instance; use Redis or the database for several), and the tutor still receives question context from the client. Loading it from the database by `questionId` would keep solutions off the wire entirely.
+
+## Testing
+
+```bash
+cd server
+createdb study_buddy_test
+DB_NAME=study_buddy_test npm run db:setup && DB_NAME=study_buddy_test npm run db:seed
+DB_NAME=study_buddy_test npm test
+```
+
+Tests start the real app against a real Postgres database (no mocks) and cover login and signup, role checks, cross-instructor access, the AI endpoint's auth, validation and budget, demo-mode safety, and security headers. The same suite runs in GitHub Actions on every push ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)), together with a client build and a Docker image build.
 
 ## Project layout
 
@@ -117,7 +164,7 @@ server/
 
 ## API overview
 
-All routes are mounted in [`server/app.js`](server/app.js): `/auth`, `/courses`, `/concepts`, `/questions`, `/courses_concepts`, `/questions_concepts`, `/quizzes`, `/student_progress`, `/analytics`, `/admin`, `/openai-api`, `/pdf-to-text`, `/images`, `/course_images`, `/explicit_data`, `/implicit_data`, `/solutions` and `/mathematical_solutions`. Read the matching file in `server/routes/` for the exact endpoints. Protected routes expect `Authorization: Bearer <token>` from `POST /auth/login`.
+All routes are mounted in [`server/app.js`](server/app.js) (under `/api` when the server also hosts the client): `/auth`, `/courses`, `/concepts`, `/questions`, `/courses_concepts`, `/questions_concepts`, `/quizzes`, `/student_progress`, `/analytics`, `/admin`, `/openai-api`, `/pdf-to-text`, `/images`, `/course_images`, `/explicit_data`, `/implicit_data`, `/solutions` and `/mathematical_solutions`. Read the matching file in `server/routes/` for the exact endpoints. Protected routes expect `Authorization: Bearer <token>` from `POST /auth/login`.
 
 ## Maintenance scripts
 
@@ -137,6 +184,8 @@ npm run backfill:figure-descriptions
 New and edited questions regenerate their figure description automatically.
 
 ## Developer notes
+
+New to some of the terms used here (rate limiting, CSP, CDN, idempotent)? See the [Concepts Log](docs/CONCEPTS.md).
 
 ### Session expiry behavior
 
