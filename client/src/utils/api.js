@@ -5,7 +5,7 @@ import {
   SESSION_RELOGIN_MESSAGE,
 } from './sessionAuth';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3001';
 // console.log('API URL:', API_URL); // Debug log
 
 function isAuthEndpoint(endpoint) {
@@ -75,6 +75,11 @@ export const auth = {
     login: (credentials) => apiCall('/auth/login', {
         method: 'POST',
         body: JSON.stringify(credentials),
+    }),
+    config: () => apiCall('/auth/config'),
+    demoLogin: (role) => apiCall('/auth/demo', {
+        method: 'POST',
+        body: JSON.stringify({ role }),
     }),
     signup: (userData) => apiCall('/auth/signup', {
         method: 'POST',

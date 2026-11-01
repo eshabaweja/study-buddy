@@ -2206,3 +2206,10 @@ input.app-input-narrow {
   display: block;
   border-radius: 10px;
 }
+
+/* "Try the demo" panel on the login form */
+.app-demo-box {
+  padding: 16px;
+  border: 1px dashed #a7b1b7;
+  border-radius: 8px;
+}

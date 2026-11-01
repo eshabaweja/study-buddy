@@ -52,6 +52,9 @@ const Chatbot = ({ question }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(localStorage.getItem('token')
+            ? { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            : {}),
         },
         body: JSON.stringify({
           userMessage: userMessage,
@@ -63,7 +66,8 @@ const Chatbot = ({ question }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to get response from tutor');
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.error || 'Failed to get response from tutor');
       }
 
       // Handle streaming response

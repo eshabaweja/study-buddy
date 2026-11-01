@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { auth } from '../utils/api';
@@ -11,6 +11,21 @@ function Login() {
         password: ''
     });
     const [error, setError] = useState('');
+    const [demoMode, setDemoMode] = useState(false);
+
+    useEffect(() => {
+        auth.config().then((c) => setDemoMode(Boolean(c?.demoMode))).catch(() => {});
+    }, []);
+
+    const handleDemo = async (role) => {
+        setError('');
+        try {
+            const data = await auth.demoLogin(role);
+            login(data.user.email, data.user.full_name, data.user.isInstructor, data.token, data.user.isAdmin);
+        } catch (err) {
+            setError(err.message || 'Demo login failed');
+        }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -76,6 +91,18 @@ function Login() {
                     Login
                 </button>
             </form>
+
+            {demoMode && (
+                <div className="sb-mar-top-sp-16 app-demo-box">
+                    <p className="sb-small app-bold sb-mar-bottom-sp-8">Just looking around? Try the demo</p>
+                    <button type="button" className="sb-button sb-button--small sb-mar-right-sp-8" onClick={() => handleDemo('student')}>
+                        Demo as student
+                    </button>
+                    <button type="button" className="sb-button sb-button--alternate sb-button--small" onClick={() => handleDemo('instructor')}>
+                        Demo as instructor
+                    </button>
+                </div>
+            )}
 
             <p className="sb-small sb-mar-top-sp-16">
                 Don't have an account? <Link to="/signup" className="sb-link">Sign up</Link>

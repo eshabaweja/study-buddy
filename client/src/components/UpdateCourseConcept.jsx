@@ -120,7 +120,7 @@ function UpdateCourseConcept() {
     const descriptionHtml = normalizeQuillHtml(getQuillStoredHtml(conceptDescriptionRef.current));
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL || 'http://localhost:3001'}/concepts/${selectedConceptId}`,
+        `${import.meta.env.VITE_API_URL ?? 'http://localhost:3001'}/concepts/${selectedConceptId}`,
         {
           method: "PUT",
           headers: {
