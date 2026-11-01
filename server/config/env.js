@@ -15,12 +15,16 @@ export function validateEnv(env = process.env) {
   }
 }
 
-/** Comma-separated list of browser origins allowed to call the API. */
+/**
+ * Browser origins allowed to call the API. Set ALLOWED_ORIGINS (comma-separated) in production.
+ * When unset outside production, any localhost port is allowed, because Vite moves to the
+ * next free port (5174, 5175...) when 5173 is busy.
+ */
 export function allowedOrigins(env = process.env) {
-  return (env.ALLOWED_ORIGINS || 'http://localhost:5173')
-    .split(',')
-    .map((o) => o.trim())
-    .filter(Boolean);
+  if (env.ALLOWED_ORIGINS) {
+    return env.ALLOWED_ORIGINS.split(',').map((o) => o.trim()).filter(Boolean);
+  }
+  return env.NODE_ENV === 'production' ? [] : [/^http:\/\/localhost:\d+$/];
 }
 
 export const isDemoMode = (env = process.env) => env.DEMO_MODE === 'true';
