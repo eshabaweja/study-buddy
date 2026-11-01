@@ -1,9 +1,5 @@
 import pg from 'pg';
-import dotenv from 'dotenv';
-
-if (process.env.NODE_ENV !== 'production') {
-  dotenv.config({ path: '.env.local' })
-};
+import '../config/loadEnv.js';
 
 const { Pool } = pg;
 

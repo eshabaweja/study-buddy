@@ -148,3 +148,32 @@ export const requireInstructorOrAdmin = async (req, res, next) => {
     res.status(500).json({ error: 'Authentication failed' });
   }
 };
+/** Any signed-in user (student or instructor). Sets req.user = { email, isInstructor }. */
+export const requireAuth = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Authentication required' });
+  }
+  const token = authHeader.split(' ')[1];
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const result = await pool.query(
+      'SELECT email, is_instructor FROM users WHERE email = $1',
+      [decoded.email],
+    );
+    if (result.rows.length === 0) {
+      return res.status(401).json({ error: SESSION_RELOGIN_MESSAGE });
+    }
+    req.user = {
+      email: result.rows[0].email,
+      isInstructor: result.rows[0].is_instructor,
+    };
+    next();
+  } catch (err) {
+    if (err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError') {
+      return res.status(401).json({ error: SESSION_RELOGIN_MESSAGE });
+    }
+    console.error('Auth middleware error:', err);
+    res.status(500).json({ error: 'Authentication failed' });
+  }
+};

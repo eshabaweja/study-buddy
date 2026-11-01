@@ -1,17 +1,9 @@
-import 'dotenv/config';
 import express from 'express';
 import { getLlmHeaders, getLlmUrl, getTutorModel } from '../config/llm.js';
+import { validateBody, tutorSchema } from '../middleware/validate.js';
 import { ensureFigureDescription } from '../services/figureDescription.js';
 
 const router = express.Router();
-
-// Validate API key and base URL exist
-if (!process.env.LLM_API_KEY) {
-  throw new Error('LLM_API_KEY environment variable is required');
-}
-if (!process.env.LLM_BASE_URL) {
-  throw new Error('LLM_BASE_URL environment variable is required');
-}
 
 // In-memory chatbot configuration
 const chatbotConfig = {
@@ -48,7 +40,10 @@ const defaultQuestionData = {
   solution: "The factorial of 5 is 120"
 };
 
-router.post('/', async (req, res) => {
+router.post('/', validateBody(tutorSchema), async (req, res) => {
+  if (!process.env.LLM_API_KEY || !process.env.LLM_BASE_URL) {
+    return res.status(503).json({ error: 'The AI tutor is not configured on this server.' });
+  }
   try {
     const { userMessage, chatHistory, questionData, questionId, stream } = req.body;
     
@@ -196,11 +191,11 @@ router.post('/', async (req, res) => {
     console.error('LLM API Error:', error);
     if (res.writableEnded) return;
     if (res.headersSent) {
-      res.write(`data: ${JSON.stringify({ error: 'Internal server error', message: error.message })}\n\n`);
+      res.write(`data: ${JSON.stringify({ error: 'Internal server error' })}\n\n`);
       res.end();
       return;
     }
-    res.status(500).json({ error: 'Internal server error', message: error.message });
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

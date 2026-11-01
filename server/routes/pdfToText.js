@@ -1,6 +1,8 @@
 import express from 'express';
 import multer from 'multer';
 import { requireInstructor } from '../middleware/auth.js';
+import { llmLimiter } from '../middleware/rateLimit.js';
+import { enforceLlmBudget } from '../middleware/llmBudget.js';
 import {
   maxBytesForMime,
   MAX_UPLOAD_BYTES,
@@ -35,7 +37,7 @@ function handleMulter(req, res, next) {
   });
 }
 
-router.post('/', requireInstructor, handleMulter, async (req, res) => {
+router.post('/', requireInstructor, llmLimiter, enforceLlmBudget, handleMulter, async (req, res) => {
   if (!req.file?.buffer) {
     return res.status(400).json({ error: 'Choose a PDF, JPEG, or PNG to convert' });
   }

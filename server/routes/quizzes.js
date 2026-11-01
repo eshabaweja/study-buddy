@@ -8,6 +8,7 @@ import {
   CourseAccessError,
 } from '../db/courseOwnership.js';
 import { gradeTypedAnswer } from '../services/quizGrading.js';
+import { tryConsumeLlmBudget } from '../middleware/llmBudget.js';
 
 const router = express.Router();
 
@@ -1422,6 +1423,9 @@ router.post('/:quizId/grade-with-ai', requireInstructor, async (req, res) => {
           );
           promptHtml = enriched.prompt_html;
           referenceAnswerHtml = enriched.reference_answer_html;
+        }
+        if (!tryConsumeLlmBudget(req.user?.email || req.ip).ok) {
+          throw new Error('Daily AI usage limit reached');
         }
         const grading = await gradeTypedAnswer({
           promptHtml,

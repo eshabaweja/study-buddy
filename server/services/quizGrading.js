@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import { getGradingModel, getLlmHeaders, getLlmUrl } from '../config/llm.js';
 
 function stripHtml(html) {

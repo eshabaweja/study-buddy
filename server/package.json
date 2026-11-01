@@ -11,7 +11,10 @@
     "migrate:question-images:dry-run": "node scripts/migrateQuestionImagesToHtml.js --dry-run",
     "migrate:figure-description-columns": "node scripts/ensureFigureDescriptionColumns.js",
     "backfill:figure-descriptions": "node scripts/backfillFigureDescriptions.js",
-    "backfill:figure-descriptions:dry-run": "node scripts/backfillFigureDescriptions.js --dry-run"
+    "backfill:figure-descriptions:dry-run": "node scripts/backfillFigureDescriptions.js --dry-run",
+    "db:setup": "node scripts/setupDb.js",
+    "db:seed": "node scripts/seedDemo.js",
+    "test": "node --test --test-concurrency=1 tests/*.test.js"
   },
   "keywords": [],
   "author": "",
@@ -21,10 +24,13 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "express-rate-limit": "^8.7.2",
+    "helmet": "^8.3.0",
     "jsonwebtoken": "^9.0.2",
     "multer": "^2.2.0",
     "openai": "^5.8.2",
-    "pg": "^8.16.0"
+    "pg": "^8.16.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"
