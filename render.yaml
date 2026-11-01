@@ -1,0 +1,40 @@
+# Render Blueprint: one web service (API + built client in a single Docker image) and a Postgres database.
+# Render > New > Blueprint > pick this repo. Then set LLM_BASE_URL / LLM_API_KEY / LLM_MODEL in the dashboard.
+services:
+  - type: web
+    name: study-buddy
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    dockerCommand: sh -c "node scripts/setupDb.js && node scripts/seedDemo.js && node server.js"
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DEMO_MODE
+        value: "true"
+      - key: LLM_DAILY_LIMIT_PER_USER
+        value: "30"
+      - key: LLM_DAILY_LIMIT_GLOBAL
+        value: "300"
+      - key: LLM_BASE_URL
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_MODEL
+        sync: false
+      - key: DB_HOST
+        fromDatabase: { name: study-buddy-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: study-buddy-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: study-buddy-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: study-buddy-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: study-buddy-db, property: password }
+
+databases:
+  - name: study-buddy-db
+    plan: free
+    databaseName: study_buddy
+    user: study_buddy
